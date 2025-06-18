@@ -23,13 +23,8 @@ const (
 	exportFolder = "pdf_exports"
 )
 
-var (
-	Version   = "dev"
-	BuildTime = "unknown"
-)
-
 func printVersion() {
-	fmt.Printf("📦 Versi: %s\n🕒 Dibangun: %s\n", Version, BuildTime)
+	fmt.Printf("📦 Versi: %s\n🕒 Dibangun: %s\n", Version, BuildDate)
 }
 
 func main() {
