@@ -2,7 +2,7 @@
 
 set -e
 
-APP_NAME="myapp" # Ubah ke nama aplikasi kamu
+APP_NAME="Converter Blob Teradocu" # Ubah ke nama aplikasi kamu
 OUTPUT_DIR="builds"
 VERSION=$(sed -nE 's/^const Version = "([0-9]+\.[0-9]+\.[0-9]+)"/\1/p' version.go)
 
