@@ -1,6 +1,7 @@
 package sharepoint
 
 import (
+	"converter_blob/types"
 	"fmt"
 	"os"
 	"path/filepath"
@@ -143,7 +144,7 @@ func UploadFile(localPath, sharepointFolderPath string) (string, error) {
 	return fullSharePath, nil
 }
 
-func ShareFolderOnly(folderPath string, emails []string) error {
+func ShareFolderOnly(folderPath string, emailAccess []types.EmailAccess) error {
 	cleanPath := strings.ReplaceAll(folderPath, "\\", "/")
 	cleanPath = strings.TrimPrefix(cleanPath, "/")
 	cleanPath = strings.ReplaceAll(cleanPath, "//", "/")
@@ -157,42 +158,43 @@ func ShareFolderOnly(folderPath string, emails []string) error {
 	// Gunakan format path SharePoint (gunakan '/' bukan '\')
 	spFolderPath := strings.TrimPrefix(filepath.ToSlash(cleanPath), "/")
 
-	// Siapkan body permintaan
-	recipients := make([]map[string]string, 0, len(emails))
-	for _, email := range emails {
-		recipients = append(recipients, map[string]string{
-			"email": email,
-		})
+	for _, access := range emailAccess {
+
+		if access.Email != "firman.sahlani@mmsgroup.co.id" || access.Email != "rio.ariandi@mmsgroup.co.id" {
+			continue // Lewati jika email tidak sesuai
+		}
+
+		shareBody := map[string]interface{}{
+			"recipients":     []string{"imam.dwicaksono@mmsgroup.co.id", "rio.ariandi@mmsgroup.co.id"},
+			"message":        "Akses folder diberikan melalui sistem.",
+			"requireSignIn":  true,
+			"sendInvitation": false,
+			"roles":          []string{access.SharepointRole.RolePermission},
+		}
+		fmt.Print(resty.New().JSONMarshal(shareBody))
+
+		client := resty.New()
+		shareURL := fmt.Sprintf(
+			"https://graph.microsoft.com/v1.0/sites/%s/drive/root:/%s:/invite",
+			siteID, spFolderPath,
+		)
+
+		resp, err := client.R().
+			SetHeader("Authorization", "Bearer "+token).
+			SetHeader("Content-Type", "application/json").
+			SetBody(shareBody).
+			Post(shareURL)
+
+		if err != nil {
+			return fmt.Errorf("❌ Gagal melakukan permintaan share: %w", err)
+		}
+		if resp.IsError() {
+			return fmt.Errorf("❌ Gagal share folder (status %d): %s", resp.StatusCode(), resp.String())
+		}
+
+		fmt.Printf("📨 Folder '%s' berhasil dibagikan ke: %s\n", spFolderPath, access.Email)
 	}
 
-	shareBody := map[string]interface{}{
-		"recipients":     recipients,
-		"message":        "Akses folder diberikan melalui sistem.",
-		"requireSignIn":  true,
-		"sendInvitation": false,
-		"roles":          []string{"read"},
-	}
-
-	client := resty.New()
-	shareURL := fmt.Sprintf(
-		"https://graph.microsoft.com/v1.0/sites/%s/drive/root:/%s:/invite",
-		siteID, spFolderPath,
-	)
-
-	resp, err := client.R().
-		SetHeader("Authorization", "Bearer "+token).
-		SetHeader("Content-Type", "application/json").
-		SetBody(shareBody).
-		Post(shareURL)
-
-	if err != nil {
-		return fmt.Errorf("❌ Gagal melakukan permintaan share: %w", err)
-	}
-	if resp.IsError() {
-		return fmt.Errorf("❌ Gagal share folder (status %d): %s", resp.StatusCode(), resp.String())
-	}
-
-	fmt.Printf("📨 Folder '%s' berhasil dibagikan ke: %s\n", spFolderPath, strings.Join(emails, ", "))
 	return nil
 }
 

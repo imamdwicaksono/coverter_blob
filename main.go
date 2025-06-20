@@ -1,17 +1,20 @@
 package main
 
 import (
+	"converter_blob/database"
 	"converter_blob/logs"
 	"converter_blob/sharepoint"
 	"converter_blob/types"
 	"database/sql"
 	"encoding/csv"
+	"encoding/json"
 	"flag"
 	"fmt"
 	"io/ioutil"
 	"log"
 	"os"
 	"path/filepath"
+	"strconv"
 	"strings"
 	"time"
 
@@ -20,7 +23,8 @@ import (
 )
 
 const (
-	exportFolder = "pdf_exports"
+	exportFolder   = "pdf_exports"
+	fileUserAccess = "users.json"
 )
 
 func printVersion() {
@@ -159,10 +163,12 @@ func extractAllFiles(db *sql.DB, withUploadSharepoint bool) error {
     fl.id AS folder_id,
     lo_get(doc_bl.binary) AS file_data_binary
 FROM teradocu.document_binary_large doc_bl
-JOIN teradocu.document doc ON doc.id = doc_bl.document_id
-LEFT JOIN teradocu.document_metadata doc_meta ON doc.id = doc_meta.document_id
-LEFT JOIN teradocu.folder fl ON doc.folder_id = fl.id
+INNER JOIN teradocu.document doc ON doc.id = doc_bl.document_id
+INNER JOIN teradocu.document_metadata doc_meta ON doc.id = doc_meta.document_id
+INNER JOIN teradocu.folder fl ON doc.folder_id = fl.id
+where fl.fullpath LIKE '%IT DEVELOPMENT%'
 ORDER BY doc_bl.document_id, doc_bl.version DESC
+limit 10
 	`)
 	if err != nil {
 		return fmt.Errorf("gagal query: %w", err)
@@ -180,8 +186,8 @@ ORDER BY doc_bl.document_id, doc_bl.version DESC
 
 	count := 0
 	// Timestamp format (tanpa karakter ":" karena ilegal di SharePoint paths)
-	timestamp := time.Now().Format("2006-01-02T15-04-05")
-	accessMap := make(map[string]map[string]bool) // folder → user set
+	timestamp := time.Now().Format("2006-01-02T15-04-05") // folder → user set
+
 	for rows.Next() {
 		var (
 			fileName       string
@@ -201,31 +207,6 @@ ORDER BY doc_bl.document_id, doc_bl.version DESC
 		if fileData == nil {
 			fileData = fileDataBinary
 		}
-
-		// // Ganti dengan folder ID yang sesuai
-		// listUserFolder, err := GetUserByFolderId(folderId, db)
-		// if err != nil {
-		// 	log.Fatalf("❌ Gagal mendapatkan akses folder: %v", err)
-		// }
-		// if len(listUserFolder) == 0 {
-		// 	log.Printf("⚠️  Tidak ada user yang memiliki akses ke folder ID %d", folderId)
-		// }
-
-		// // Logging ke file
-		// logWriterUserAccess := logs.SetLog("user_access.txt")
-		// defer logs.LogFlush(logWriterUserAccess)
-
-		// for _, userAccess := range listUserFolder {
-		// 	email := userAccess.Email
-		// 	fID := userAccess.FolderId
-
-		// 	logLine := fmt.Sprintf("[%s] User %s memiliki akses ke folder ID %d\n", time.Now().Format(time.RFC3339), email, fID)
-		// 	logWriterUserAccess.WriteString(logLine)
-		// 	log.Print("📂", logLine)
-
-		// 	// Simpan ke dalam map
-		// 	// accessMap[fID] = append(accessMap[fID], email)
-		// }
 
 		// Buat direktori sesuai struktur full_path
 		safeFolder := filepath.Join(exportFolder, filepath.FromSlash(fullPath))
@@ -289,86 +270,79 @@ ORDER BY doc_bl.document_id, doc_bl.version DESC
 		// spPath := filepath.ToSlash(fullPath) // pastikan path menggunakan `/` untuk SharePoint
 
 		// Remove "pdf_exports" prefix from outputPath for cleanFullPath
+
 		cleanFolderPath := strings.TrimPrefix(outputPath, exportFolder+string(os.PathSeparator))
 		cleanFolderPath = strings.Trim(cleanFolderPath, "/\\")
 		folderPath := fmt.Sprintf("%s/%s", timestamp, cleanFolderPath)
 
-		// if withUploadSharepoint {
 		sharepoint.UploadFile(outputPath, folderPath)
+
+		// folderKey := fmt.Sprintf("%s/%s", timestamp, fullPath)
+
+		// if _, ok := accessMap[folderKey]; !ok {
+		// 	accessMap[folderKey] = make(map[string]bool)
 		// }
-
-		folderKey := fmt.Sprintf("%s/%s", timestamp, fullPath)
-
-		if _, ok := accessMap[folderKey]; !ok {
-			accessMap[folderKey] = make(map[string]bool)
-		}
-		accessMap[folderKey]["imam.dwicaksono@mmsgroup.co.id"] = true
+		// accessMap[folderKey]["imam.dwicaksono@mmsgroup.co.id"] = true
 		// accessMap[folderKey]["rio.ariandi@mmsgroup.co.id"] = true
+		var index = count + 1 // Increment index for next file
+		fmt.Printf("📄 Ekstrak file ke %s : %s → %s\n", strconv.Itoa(index), fileName, outputPath)
 		count++
 	}
+
+	SaveUserFolder(db, timestamp)
+
+	SaveListUsers()
 
 	logWriter := logs.SetLog("sharepoint_log.txt")
 	logs.LogFlush(logWriter)
 
-	for folder, userSet := range accessMap {
-		var emails []string
-		for email := range userSet {
-			emails = append(emails, email)
+	// Ambil data user-folder dari users.json
+	file, err := os.Open(fileUserAccess)
+	if err != nil {
+		log.Printf("❌ Gagal membuka %s: %v", fileUserAccess, err)
+	} else {
+		defer file.Close()
+		type User struct {
+			FolderId    string              `json:"folder_id"`
+			FolderPath  string              `json:"folder_path"`
+			EmailAccess []types.EmailAccess `json:"email_access"`
 		}
-		log.Println("📂 Berbagi folder:", folder, "ke", emails)
-		err := sharepoint.ShareFolderOnly(folder, emails)
-		if err == nil {
-			logWriter.WriteString(fmt.Sprintf("[%s] SHARED %s to %v\n", time.Now().Format(time.RFC3339), folder, emails))
-			log.Println("📂 Berhasil share folder:", folder, "ke", emails)
+		var users []User
+		decoder := json.NewDecoder(file)
+		if err := decoder.Decode(&users); err != nil {
+			log.Printf("❌ Gagal decode %s: %v", fileUserAccess, err)
 		} else {
-			logWriter.WriteString(fmt.Sprintf("[%s] ERROR %s: %v\n", time.Now().Format(time.RFC3339), folder, err))
-			log.Println("❌ Gagal share folder:", folder, "ke", emails, "-", err)
+			for _, user := range users {
+				var emails []string
+				for _, ea := range user.EmailAccess {
+					emails = append(emails, ea.Email)
+				}
+				log.Println("📂 Berbagi folder:", user.FolderPath, "ke", emails)
+				_ = sharepoint.ShareFolderOnly(user.FolderPath, user.EmailAccess)
+
+				if err := sharepoint.GetAccessListPermission(user.FolderPath); err != nil {
+					log.Printf("❌ Gagal mendapatkan daftar akses folder: %v", err)
+				}
+
+				// if err == nil {
+				// 	logWriter.WriteString(fmt.Sprintf("[%s] SHARED %s to %v\n", time.Now().Format(time.RFC3339), user.FolderPath, emails))
+				// 	log.Println("📂 Berhasil share folder:", user.FolderPath, "ke", emails)
+				// } else {
+				// 	logWriter.WriteString(fmt.Sprintf("[%s] ERROR %s: %v\n", time.Now().Format(time.RFC3339), user.FolderPath, err))
+				// 	log.Println("❌ Gagal share folder:", user.FolderPath, "ke", emails, "-", err)
+				// }
+			}
 		}
 	}
 	fmt.Printf("✅ Total file diekstrak: %d\n", count)
-	defer os.RemoveAll(exportFolder) // Hapus folder export setelah selesai
+
+	// check permission folder
+
 	return nil
 }
 
-func GetUserByFolderId(folderId string, db *sql.DB) ([]types.UserFolderAccess, error) {
-	query := `
-	WITH RECURSIVE item_hierarchy AS (
-		SELECT 
-			id,
-			name,
-			owner,
-			fullpath AS file_path,
-			parent_id,
-			id AS root_id,
-			name AS root_name,
-			0 AS level
-		FROM teradocu.folder
-		WHERE parent_id IS NULL
-		UNION ALL
-		SELECT 
-			f.id,
-			f.name,
-			f.owner,
-			f.fullpath AS file_path,
-			f.parent_id,
-			ih.root_id,
-			ih.root_name,
-			ih.level + 1
-		FROM teradocu.folder f
-		JOIN item_hierarchy ih ON f.parent_id = ih.id
-	)
-	SELECT 
-		pr.email,
-		ih2.id AS folder_id
-	FROM item_hierarchy ih2
-	JOIN teradocu.folder_profile_role fpr ON fpr.folder_id = ih2.id
-	JOIN teradocu.employee_user eu1 ON fpr.user_id = eu1.id
-	JOIN teradocu.person pr ON pr.id = eu1.person_id
-	WHERE ih2.id = $1
-	GROUP BY ih2.id, pr.email;
-	`
-
-	rows, err := db.Query(query, folderId)
+func GetUserByProfileId(profile_id string, db *sql.DB) ([]types.UserFolderAccess, error) {
+	rows, err := database.GetUserByProfile(db, profile_id)
 	if err != nil {
 		fmt.Println("❌ Gagal menjalankan query:", err)
 		return nil, err
@@ -379,14 +353,22 @@ func GetUserByFolderId(folderId string, db *sql.DB) ([]types.UserFolderAccess, e
 
 	for rows.Next() {
 		var email string
+		var profileId string
 		var folderId string
-		if err := rows.Scan(&email, &folderId); err != nil {
+		var filePath string
+		var folderRole string
+		if err := rows.Scan(&email, &profileId, &folderId, &filePath, &folderRole); err != nil {
 			fmt.Println("❌ Gagal membaca hasil query:", err)
 			continue
 		}
 		listUserFolder = append(listUserFolder, types.UserFolderAccess{
-			Email:    email,
-			FolderId: folderId,
+			EmailAccess: types.EmailAccess{
+				Email:          email,
+				FolderRole:     folderRole,
+				SharepointRole: GetFolderRolePermission(folderRole),
+			},
+			FolderId:   folderId,
+			FolderPath: filePath,
 		})
 	}
 
@@ -504,4 +486,173 @@ func sanitizeFileName(name string) string {
 		}
 		return r
 	}, name)
+}
+
+// SaveUserFolder saves user access to JSON file.
+// If prefixAdditional is not set (""), it defaults to "pdf_exports/".
+func SaveUserFolder(db *sql.DB, prefixAdditional ...string) {
+	prefix := ""
+	if len(prefixAdditional) > 0 && prefixAdditional[0] != "" {
+		prefix = prefixAdditional[0]
+	}
+
+	listUserFolder, err := GetUserByProfileId("MMSGI_IT_DEVELOPMENT", db)
+	if err != nil {
+		log.Fatalf("❌ Gagal mendapatkan akses folder: %v", err)
+	}
+
+	logWriterUserAccess := logs.SetLog("user_access.txt")
+	defer logs.LogFlush(logWriterUserAccess)
+
+	for _, userAccess := range listUserFolder {
+		emailAccess := userAccess.EmailAccess
+		folderPath := prefix + userAccess.FolderPath
+		fID := userAccess.FolderId
+
+		SaveUser(fID, folderPath, emailAccess)
+	}
+}
+
+func SaveUser(folderId string, folderPath string, email types.EmailAccess) error {
+
+	type User struct {
+		FolderId    string              `json:"folder_id"`
+		FolderPath  string              `json:"folder_path"`
+		EmailAccess []types.EmailAccess `json:"email_access"`
+	}
+
+	file, err := os.OpenFile(fileUserAccess, os.O_CREATE|os.O_RDWR, 0644)
+	if err != nil {
+		return fmt.Errorf("gagal membuka file %s: %w", fileUserAccess, err)
+	}
+	defer file.Close()
+
+	var users []User
+
+	stat, _ := file.Stat()
+	if stat.Size() > 0 {
+		decoder := json.NewDecoder(file)
+		if err := decoder.Decode(&users); err != nil {
+			return fmt.Errorf("gagal decode users.json: %w", err)
+		}
+	}
+
+	found := false
+	for i, u := range users {
+		if u.FolderId == folderId {
+			// Update folder path jika berubah
+			users[i].FolderPath = folderPath
+
+			// Tambahkan email jika belum ada
+			emailExists := false
+			for _, e := range users[i].EmailAccess {
+				if e.Email == email.Email {
+					emailExists = true
+					break
+				}
+			}
+			if !emailExists {
+				users[i].EmailAccess = append(users[i].EmailAccess, email)
+			}
+
+			found = true
+			break
+		}
+	}
+	if !found {
+		users = append(users, User{
+			FolderId:    folderId,
+			FolderPath:  folderPath,
+			EmailAccess: []types.EmailAccess{email, {Email: email.Email, FolderRole: "FOLDER_VIEWER", SharepointRole: GetFolderRolePermission("FOLDER_VIEWER")}},
+		})
+	}
+
+	// Tulis ulang file
+	file.Truncate(0)
+	file.Seek(0, 0)
+	encoder := json.NewEncoder(file)
+	encoder.SetIndent("", "  ")
+	if err := encoder.Encode(users); err != nil {
+		return fmt.Errorf("gagal encode users.json: %w", err)
+	}
+
+	fmt.Printf("✅ Berhasil menyimpan akses folder %s untuk email %s\n", folderId, email)
+	return nil
+
+}
+
+func SaveListUsers() {
+	file, err := os.Open(fileUserAccess)
+	if err != nil {
+		log.Fatalf("❌ Gagal membuka file %s: %v", fileUserAccess, err)
+	}
+	defer file.Close()
+
+	type User struct {
+		FolderId    string              `json:"folder_id"`
+		FolderPath  string              `json:"folder_path"`
+		EmailAccess []types.EmailAccess `json:"email_access"`
+	}
+
+	var users []User
+	decoder := json.NewDecoder(file)
+	if err := decoder.Decode(&users); err != nil {
+		log.Fatalf("❌ Gagal decode %s: %v", fileUserAccess, err)
+	}
+
+	// Group unique emails only (ignore role, folder, etc.)
+	emailSet := make(map[string]struct{})
+	for _, user := range users {
+		for _, email := range user.EmailAccess {
+			emailSet[email.Email] = struct{}{}
+		}
+	}
+
+	var emails []string
+	for email := range emailSet {
+		emails = append(emails, email)
+	}
+
+	outFile, err := os.Create("list_user.json")
+	if err != nil {
+		log.Fatalf("❌ Gagal membuat list_user.json: %v", err)
+	}
+	defer outFile.Close()
+
+	encoder := json.NewEncoder(outFile)
+	encoder.SetIndent("", "  ")
+	if err := encoder.Encode(emails); err != nil {
+		log.Fatalf("❌ Gagal encode list_user.json: %v", err)
+	}
+
+	fmt.Println("✅ list_user.json berhasil dibuat.")
+}
+
+// GetFolderRoleAccessByRole returns the FolderRoleAccess with the given role, or nil if not found.
+func GetFolderRolePermission(role string) *types.FolderRoleAccess {
+	if role == "FOLDER_VIEWER" {
+		// You can add any specific logic for ROLE_VIEWER here if needed.
+		return &types.FolderRoleAccess{
+			FolderRole:     role,
+			RolePermission: "read",
+		}
+	}
+	if role == "FOLDER_CONTRIBUTOR" {
+		// You can add any specific logic for ROLE_EDITOR here if needed.
+		return &types.FolderRoleAccess{
+			FolderRole:     role,
+			RolePermission: "write",
+		}
+	}
+	if role == "FOLDER_ADMIN" {
+		// You can add any specific logic for ROLE_EDITOR here if needed.
+		return &types.FolderRoleAccess{
+			FolderRole:     role,
+			RolePermission: "owner",
+		}
+	}
+	return &types.FolderRoleAccess{
+		FolderRole:     role,
+		RolePermission: "view", // Default permission
+	}
 }

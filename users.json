@@ -1,0 +1,6362 @@
+[
+  {
+    "folder_id": "2c9180848026716501806522311e163c",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/KNOWLEDGE/Focus Area",
+    "email_access": [
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c91808482157f1a01821587e24f016b",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEVELOPMENT/Project_Online Bidding and Vendor Management/Business Requirement Document (BRD)/E-Procurement/Vendor",
+    "email_access": [
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c01802643dbb616b6",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/modules/oracle.bali.jewt",
+    "email_access": [
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c0180264dc129357f",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/sqldeveloper/extensions/oracle.hcs/lib",
+    "email_access": [
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c0180264757322527",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/sqldeveloper/doc/welcome/ja",
+    "email_access": [
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c918084814c8b5b01815b5557940036",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEVELOPMENT/Project_Document Management System (DMS)",
+    "email_access": [
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_PREVIEW",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_PREVIEW",
+          "role_permission": "view"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_PREVIEW",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_PREVIEW",
+          "role_permission": "view"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c0180264dc628358c",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/sqldeveloper/extensions/oracle.olap/lib",
+    "email_access": [
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c91808480267165018044d52e4a1578",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEVELOPMENT/Project_Asset Management",
+    "email_access": [
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180848026716501806e5eaf2a16d0",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/KNOWLEDGE/IT BABOK/Book of Forms/Initiating",
+    "email_access": [
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c0180264f09ed38bb",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/svnkit/licenses",
+    "email_access": [
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c91808480267165018044cd8cb1152f",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEVELOPMENT/Project_Online Bidding and Vendor Management",
+    "email_access": [
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c018026423caa1087",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/jdk/jre/bin/server",
+    "email_access": [
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c0180264e35553699",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/sqldeveloper/extensions/oracle.sqldeveloper.timesten/lib",
+    "email_access": [
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c018026415ef60cd6",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/javavm/lib",
+    "email_access": [
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c0180264e41ac36bb",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/sqldeveloper/lib",
+    "email_access": [
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c018026441b7217a1",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/modules/oracle.xmlef",
+    "email_access": [
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c91808482157f1a0182158c1feb0263",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEVELOPMENT/Project_Online Bidding and Vendor Management/Document Management System/MTL",
+    "email_access": [
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c01802640f9d70ad5",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper",
+    "email_access": [
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c0180262d722e04fe",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/test",
+    "email_access": [
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c01802646a5232285",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/netbeans/platform/modules",
+    "email_access": [
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c0180264812c3277e",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/sqldeveloper/extensions/oracle.datamodeler/reports/Reporting Schema diagrams",
+    "email_access": [
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c018026452f121c7b",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/netbeans/platform/modules/lib/i386/linux",
+    "email_access": [
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180848215fbec01821ad617ad01b7",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEVELOPMENT/Project_Online Bidding and Vendor Management/1x",
+    "email_access": [
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c0180264180e60d75",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/jdev/extensions/oracle.jdeveloper.git/license",
+    "email_access": [
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c91808482157f1a0182158bd66201ff",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEVELOPMENT/Project_Online Bidding and Vendor Management/Document Management System",
+    "email_access": [
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c01802630edb20503",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/KNOWLEDGE",
+    "email_access": [
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c01802641564a0c9f",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/ide/macros",
+    "email_access": [
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c01802647a9e1264b",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/sqldeveloper/extensions/oracle.datamodeler/doc/welcome",
+    "email_access": [
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c01802643e57b16e0",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/modules/oracle.javatools",
+    "email_access": [
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c01802642b99f12bb",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/jdk/jre/lib/fonts",
+    "email_access": [
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c018026428d021210",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/jdk/jre/lib/deploy",
+    "email_access": [
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180848129c74d01813d5054ae000e",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEVELOPMENT/Ovi cuma bisa lihat",
+    "email_access": [
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c0180264443b2185b",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/netbeans/fcpbridge/core",
+    "email_access": [
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c0180264444fe1863",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/netbeans/fcpbridge/modules",
+    "email_access": [
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c01802643f3b91716",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/modules/oracle.osdt",
+    "email_access": [
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c018026413ae40c1e",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/ide/lib",
+    "email_access": [
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c0180264311d913fd",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/jdk/lib",
+    "email_access": [
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c0180264160900cde",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/jdbc/lib",
+    "email_access": [
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c918084827c398901827c996c3b000f",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEVELOPMENT/test/Document Management System",
+    "email_access": [
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c018026473bc224b7",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/sqldeveloper/doc",
+    "email_access": [
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c0180264f07c738b3",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/svnkit",
+    "email_access": [
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c01802643b399160e",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/modules/javafx/windows-x64/legal/javafx.web",
+    "email_access": [
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c018026478fc42602",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/sqldeveloper/doc/welcome/zh_CN",
+    "email_access": [
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c018026427eac11ce",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/jdk/jre/lib/amd64",
+    "email_access": [
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c01802643089b13bb",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/jdk/jre/lib/security/policy/unlimited",
+    "email_access": [
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c01802644a07f1a0d",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/netbeans/platform/config/Modules",
+    "email_access": [
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c0180264e15cb3646",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/sqldeveloper/extensions/oracle.sqldeveloper.rdfgraph/lib",
+    "email_access": [
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180848215fbec018234a4a6d10341",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEVELOPMENT/test",
+    "email_access": [
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c91808480267165018044cee7661538",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEVELOPMENT/Project_Online Bidding and Vendor Management/MKC",
+    "email_access": [
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c0180263254a60508",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/POLICY AND PROCEDURE/POLICY",
+    "email_access": [
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c918084802671650180d4f77b9318c3",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/Training DMS/Page",
+    "email_access": [
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c0180264e78fe3745",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/sqldeveloper/lib/ext",
+    "email_access": [
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c01802645305d1c82",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/netbeans/platform/modules/lib",
+    "email_access": [
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c01802643067213ae",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/jdk/jre/lib/security/policy/limited",
+    "email_access": [
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c01802642ff7d138d",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/jdk/jre/lib/security",
+    "email_access": [
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c91808482157f1a018215872d210026",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEVELOPMENT/Project_Online Bidding and Vendor Management/Business Requirement Document (BRD)",
+    "email_access": [
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c01802643cf771685",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/modules/oracle.adf.share.ca",
+    "email_access": [
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c0180264014ec05b4",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/dataminer/demos/workflows",
+    "email_access": [
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c01802643acbd15ec",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/modules/javafx/windows-x64/legal/javafx.media",
+    "email_access": [
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c018026427d6f11c6",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/jdk/jre/lib",
+    "email_access": [
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c018026429e7d1268",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/jdk/jre/lib/ext",
+    "email_access": [
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c0180264231841052",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/jdk/jre/bin/plugin2",
+    "email_access": [
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c01802642842011e5",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/jdk/jre/lib/cmm",
+    "email_access": [
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c918084827c398901827c98dcbf0002",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEVELOPMENT/test/Business Process MMS",
+    "email_access": [
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c91808482157f1a018215890d9801d0",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEVELOPMENT/Project_Online Bidding and Vendor Management/Sample",
+    "email_access": [
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c91808482157f1a01821587f3b6018c",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEVELOPMENT/Project_Online Bidding and Vendor Management/Business Requirement Document (BRD)/Reference",
+    "email_access": [
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c01802642d088132a",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/jdk/jre/lib/jfr",
+    "email_access": [
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c018026410b2f0b3b",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/ide/doc/extension",
+    "email_access": [
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c01802647441024d3",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/sqldeveloper/doc/welcome",
+    "email_access": [
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c018026448bac19ad",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/netbeans/ide/update_tracking",
+    "email_access": [
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c01802643b2551607",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/modules/javafx/windows-x64/legal/javafx.swing",
+    "email_access": [
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c918084827c398901827c99718f0020",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEVELOPMENT/test/Document Management System/Manual Book_Teradocu",
+    "email_access": [
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c0180264715b32422",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/rdbms/jlib",
+    "email_access": [
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c018026479562261a",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/sqldeveloper/extensions",
+    "email_access": [
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c018026476338255a",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/sqldeveloper/doc/welcome/welcomeImages",
+    "email_access": [
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c01802643374e146a",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/modules/com.fasterxml.woodstox",
+    "email_access": [
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c01802647189e242f",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/sleepycat/je-3.3.98/lib",
+    "email_access": [
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c01802641d05e0f14",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/jdk/jre/bin/dtplugin",
+    "email_access": [
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c01802623c2f204d3",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/PROJECTS",
+    "email_access": [
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180837d04aa9f017d096140530035",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA",
+    "email_access": [
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c018026475dd42544",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/sqldeveloper/doc/welcome/pt_BR",
+    "email_access": [
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c91808482157f1a0182158bd9ab0211",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEVELOPMENT/Project_Online Bidding and Vendor Management/Document Management System/Manual Book_Teradocu",
+    "email_access": [
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c018026444e361891",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/netbeans/fcpbridge/update_tracking",
+    "email_access": [
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c01802643e05116cb",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/modules/oracle.help",
+    "email_access": [
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c018026432abf1458",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/jviews",
+    "email_access": [
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180848215fbec01821ad63acd026f",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEVELOPMENT/Project_Online Bidding and Vendor Management/1x/Mining",
+    "email_access": [
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c018026452c441c6b",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/netbeans/platform/modules/lib/amd64",
+    "email_access": [
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c01802643a73b15cd",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/modules/javafx/windows-x64/legal/javafx.controls",
+    "email_access": [
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c018026415ae40cbb",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/ide/src",
+    "email_access": [
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c0180264f05a438ab",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/sqlj/lib",
+    "email_access": [
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c018026434040148e",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/modules/j2ee",
+    "email_access": [
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180848026716501806e5ca0c716c4",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/KNOWLEDGE/IT BABOK/Book of Forms",
+    "email_access": [
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c018026431db31423",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/jlib",
+    "email_access": [
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c918084802671650180d4f42c4018a1",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/Training DMS",
+    "email_access": [
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180848215fbec01821ad619b501bf",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEVELOPMENT/Project_Online Bidding and Vendor Management/1x/1x",
+    "email_access": [
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c01802643f07f1709",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/modules/oracle.ldap",
+    "email_access": [
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180848215fbec01821ad64aab02de",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEVELOPMENT/Project_Online Bidding and Vendor Management/1x/Natal KAKR/1x",
+    "email_access": [
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c91808482157f1a018215878a670127",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEVELOPMENT/Project_Online Bidding and Vendor Management/Business Requirement Document (BRD)/E-Procurement/MKC - Magat",
+    "email_access": [
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c01802648c5dc293b",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/sqldeveloper/extensions/oracle.datamodeler/reports/xslt/20",
+    "email_access": [
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c0180264828d727bd",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/sqldeveloper/extensions/oracle.datamodeler/reports/css",
+    "email_access": [
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c01802643a98a15db",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/modules/javafx/windows-x64/legal/javafx.graphics",
+    "email_access": [
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c0180264531e11c8a",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/netbeans/platform/modules/lib/x86",
+    "email_access": [
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c01802646d91d233c",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/netbeans/platform/update_tracking",
+    "email_access": [
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c0180264420c217bb",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/modules/thirdparty",
+    "email_access": [
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c01802649649e2a85",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/sqldeveloper/extensions/oracle.datamodeler/templates",
+    "email_access": [
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c01802640a75308fa",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/equinox",
+    "email_access": [
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c918084827c398901827c999b46003b",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEVELOPMENT/test/Document Management System/MHU",
+    "email_access": [
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c018026495ce22a78",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/sqldeveloper/extensions/oracle.datamodeler/samples/Dimensional_model",
+    "email_access": [
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c0180264191dc0dc7",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/jdev/extensions/oracle.webbrowser.osx",
+    "email_access": [
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c018026407b0807ee",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/test/",
+    "email_access": [
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c0180264792a4260e",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/sqldeveloper/doc/welcome/zh_TW",
+    "email_access": [
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c0180264339331472",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/modules",
+    "email_access": [
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180848026716501806e5be40116be",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/KNOWLEDGE/IT BABOK",
+    "email_access": [
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c01802643d354169a",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/modules/oracle.adf.view",
+    "email_access": [
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180848529f16801852d9cef070002",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/Sample",
+    "email_access": [
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c018026410ed50b52",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/ide/extensions",
+    "email_access": [
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c01802643cd141678",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/modules/oracle.adf.model",
+    "email_access": [
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c918084827c398901827c98dcda0006",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEVELOPMENT/test/Business Process MMS/MMP",
+    "email_access": [
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c0180264712fd241a",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/orakafka",
+    "email_access": [
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c918084827c398901827c98dcdf0008",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEVELOPMENT/test/Business Process MMS/MPS",
+    "email_access": [
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180848026716501806e5f28f516e2",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/KNOWLEDGE/IT BABOK/Book of Forms/Closing",
+    "email_access": [
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180848026716501803ff5ced614a0",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEVELOPMENT",
+    "email_access": [
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c01802647a3302631",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/sqldeveloper/extensions/oracle.datamodeler/doc",
+    "email_access": [
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c01802644ee2d1b63",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/netbeans/platform/lib",
+    "email_access": [
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c0180264daf813554",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/sqldeveloper/extensions/oracle.dmt.dataminer/lib",
+    "email_access": [
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c91808480267165018044d08b06156e",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEVELOPMENT/Project_Online Bidding and Vendor Management/MHU",
+    "email_access": [
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c918084827c398901827c99a181005d",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEVELOPMENT/test/Document Management System/MPS",
+    "email_access": [
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c01802642d8681351",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/jdk/jre/lib/management",
+    "email_access": [
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c0180264759d62533",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/sqldeveloper/doc/welcome/ko",
+    "email_access": [
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c018026483de227fd",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/sqldeveloper/extensions/oracle.datamodeler/reports/xslt/10",
+    "email_access": [
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c918084827c398901827c999f900051",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEVELOPMENT/test/Document Management System/MMP",
+    "email_access": [
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c01802641648d0ce6",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/jdev/bin",
+    "email_access": [
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c0180264968ab2a92",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/sqldeveloper/extensions/oracle.datamodeler/types",
+    "email_access": [
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c0180264751e1250f",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/sqldeveloper/doc/welcome/fr",
+    "email_access": [
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c0180264019bf05cb",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/dataminer/scripts",
+    "email_access": [
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c018026425fc0112d",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/jdk/jre/legal/jdk",
+    "email_access": [
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c018026471c15243c",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/sqldeveloper/bin",
+    "email_access": [
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c918084827c398901827c98dcd20004",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEVELOPMENT/test/Business Process MMS/MHU",
+    "email_access": [
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c01802647458a24db",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/sqldeveloper/doc/welcome/de",
+    "email_access": [
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c0180264974b62ab3",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/sqldeveloper/extensions/oracle.datamodeler/xmlmetadata",
+    "email_access": [
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c018025e445460494",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV",
+    "email_access": [
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c0180262d3ab004fa",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/Time Line",
+    "email_access": [
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c91808482157f1a0182158736690045",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEVELOPMENT/Project_Online Bidding and Vendor Management/Business Requirement Document (BRD)/E-Procurement/Dokumentasi",
+    "email_access": [
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180848026716501806e5f10be16dc",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/KNOWLEDGE/IT BABOK/Book of Forms/Executing",
+    "email_access": [
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c01802643b96d162a",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/modules/javafx/windows-x64/lib",
+    "email_access": [
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c01802641684d0cfe",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/jdev/doc/extension",
+    "email_access": [
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c018026418c850dab",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/jdev/extensions/oracle.jdeveloper.subversion/licenses",
+    "email_access": [
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c01802644cdff1ad6",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/netbeans/platform/core/locale",
+    "email_access": [
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c01802643df1b16c3",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/modules/oracle.bali.share",
+    "email_access": [
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c0180264411c6177b",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/modules/oracle.xdk",
+    "email_access": [
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c01802647e0bb270f",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/sqldeveloper/extensions/oracle.datamodeler/lib",
+    "email_access": [
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c01802639edca0563",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/KNOWLEDGE/IT-IL / IT SERVICE MANAGEMENT",
+    "email_access": [
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c018026443da0183c",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/netbeans/fcpbridge/config/Modules",
+    "email_access": [
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c0180264830a827d4",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/sqldeveloper/extensions/oracle.datamodeler/reports/img",
+    "email_access": [
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c018026445d9418dc",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/netbeans/ide/modules",
+    "email_access": [
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c018026419ef10e11",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/jdk/jre/bin",
+    "email_access": [
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c0180264426e017d2",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/modules/thirdparty/features",
+    "email_access": [
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c018026430cfc13d1",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/test/Picture",
+    "email_access": [
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c01802644c98a1ac4",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/netbeans/platform/core",
+    "email_access": [
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c018026441d0e17a9",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/modules/org.codehaus.woodstox",
+    "email_access": [
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c01802643d0d9168d",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/modules/oracle.adf.share",
+    "email_access": [
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c01802642c3c812eb",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/jdk/jre/lib/images/cursors",
+    "email_access": [
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c0180264834a827e1",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/sqldeveloper/extensions/oracle.datamodeler/reports/js",
+    "email_access": [
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c91808482157f1a0182158c162e0244",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEVELOPMENT/Project_Online Bidding and Vendor Management/Document Management System/MMP",
+    "email_access": [
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c01802643a86915d4",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/modules/javafx/windows-x64/legal/javafx.fxml",
+    "email_access": [
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c918084827c398901827c99a434006e",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEVELOPMENT/test/Document Management System/MTL",
+    "email_access": [
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c01802644614618ee",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/netbeans/ide/modules/ext",
+    "email_access": [
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c91808483cb8d090183cba2d5ec0002",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEVELOPMENT/test/Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type a",
+    "email_access": [
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c0180264169550d06",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/jdev/extensions",
+    "email_access": [
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c01802627ec6204df",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/POLICY AND PROCEDURE",
+    "email_access": [
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c91808482157f1a0182158c121f022d",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEVELOPMENT/Project_Online Bidding and Vendor Management/Document Management System/MHU",
+    "email_access": [
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c01802645332e1c91",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/netbeans/platform/modules/locale",
+    "email_access": [
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c0180264dd09d35a8",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/sqldeveloper/extensions/oracle.olapdv/lib",
+    "email_access": [
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c91808482157f1a0182158c1c560251",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEVELOPMENT/Project_Online Bidding and Vendor Management/Document Management System/MPS",
+    "email_access": [
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c018026475494251b",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/sqldeveloper/doc/welcome/it",
+    "email_access": [
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c01802640a67208f2",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/dropins",
+    "email_access": [
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180848026716501806e5ee8b616d6",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/KNOWLEDGE/IT BABOK/Book of Forms/Monitoring - Controlling",
+    "email_access": [
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c01802644efc71b6b",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/netbeans/platform/lib/locale",
+    "email_access": [
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c01802632aef5050f",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/POLICY AND PROCEDURE/PROCEDURES",
+    "email_access": [
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c91808482157f1a018215876be600b1",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEVELOPMENT/Project_Online Bidding and Vendor Management/Business Requirement Document (BRD)/E-Procurement/Flowchart",
+    "email_access": [
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c01802644425d1853",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/netbeans/fcpbridge/core/locale",
+    "email_access": [
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c01802643a60c15c6",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/modules/javafx/windows-x64/legal/javafx.base",
+    "email_access": [
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180848026716501806e5e7dd816ca",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/KNOWLEDGE/IT BABOK/Book of Forms/Planning",
+    "email_access": [
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c0180264192f50dcf",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/jdev/lib",
+    "email_access": [
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c01802643ee561701",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/modules/oracle.jrf",
+    "email_access": [
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c01802640a85c0902",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/external",
+    "email_access": [
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c0180264410641773",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/modules/oracle.pki",
+    "email_access": [
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c01802647af902666",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/sqldeveloper/extensions/oracle.datamodeler/doc/welcome/welcomeImages",
+    "email_access": [
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847db6e43a017db822ab28000c",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT",
+    "email_access": [
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c01802644915f19c9",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/netbeans/platform/config/ModuleAutoDeps",
+    "email_access": [
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c01802647483b24e8",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/sqldeveloper/doc/welcome/en",
+    "email_access": [
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c01802641fe990fa9",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/test/Picture",
+    "email_access": [
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c01802640facc0add",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/ide/bin",
+    "email_access": [
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c01802641996b0df0",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/jdk/jre",
+    "email_access": [
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180848215fbec01821ad64a8e02db",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEVELOPMENT/Project_Online Bidding and Vendor Management/1x/Natal KAKR",
+    "email_access": [
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c018026474dc624fe",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/sqldeveloper/doc/welcome/es",
+    "email_access": [
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c018026452dae1c73",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/netbeans/platform/modules/lib/amd64/linux",
+    "email_access": [
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180848215fbec01821ad625870203",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEVELOPMENT/Project_Online Bidding and Vendor Management/1x/Inventory",
+    "email_access": [
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c0180264523331c4a",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/netbeans/platform/modules/ext",
+    "email_access": [
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c918084802671650180db35ea42195e",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/TEMPLATES",
+    "email_access": [
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c0180264346c914ab",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/modules/javafx/windows-x64/bin",
+    "email_access": [
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c91808482157f1a0182158733c10038",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEVELOPMENT/Project_Online Bidding and Vendor Management/Business Requirement Document (BRD)/E-Procurement",
+    "email_access": [
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c0180264010e705a2",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/configuration",
+    "email_access": [
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c01802647a5862639",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/sqldeveloper/extensions/oracle.datamodeler/doc/welcome/en",
+    "email_access": [
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c91808480267165018044d5932a157c",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEVELOPMENT/Project_Service Desk",
+    "email_access": [
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c0180264449c8187a",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/netbeans/fcpbridge/modules/locale",
+    "email_access": [
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c01802647f81b2735",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/sqldeveloper/extensions/oracle.datamodeler/reports",
+    "email_access": [
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c018026415c090cc3",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/ide/themes",
+    "email_access": [
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c0180264254a910e9",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/jdk/jre/legal/javafx",
+    "email_access": [
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c0180264465cd1905",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/netbeans/ide/modules/locale",
+    "email_access": [
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c0180264d94ac3529",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/sqldeveloper/extensions/oracle.datamodeler/xmlmetadata/doc",
+    "email_access": [
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  },
+  {
+    "folder_id": "2c9180847fabce0c0180264453b818ac",
+    "folder_path": "2025-06-20T17-17-39/REPOSITORY/MMS GROUP INDONESIA/IT/IT DEV/sqldeveloper/netbeans/ide/config/Modules",
+    "email_access": [
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      },
+      {
+        "email": "rio.ariandi@mmsgroup.co.id",
+        "role": "FOLDER_VIEWER",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_VIEWER",
+          "role_permission": "read"
+        }
+      },
+      {
+        "email": "firman.sahlani@mmsgroup.co.id",
+        "role": "FOLDER_ADMIN",
+        "sharepoint_role": {
+          "folder_role": "FOLDER_ADMIN",
+          "role_permission": "owner"
+        }
+      }
+    ]
+  }
+]
