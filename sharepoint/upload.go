@@ -160,15 +160,15 @@ func ShareFolderOnly(folderPath string, emailAccess []types.EmailAccess) error {
 
 	for _, access := range emailAccess {
 
-		if access.Email != "firman.sahlani@mmsgroup.co.id" || access.Email != "rio.ariandi@mmsgroup.co.id" {
-			continue // Lewati jika email tidak sesuai
-		}
+		// if access.Email != "firman.sahlani@mmsgroup.co.id" || access.Email != "rio.ariandi@mmsgroup.co.id" {
+		// 	continue // Lewati jika email tidak sesuai
+		// }
 
 		shareBody := map[string]interface{}{
-			"recipients":     []string{"imam.dwicaksono@mmsgroup.co.id", "rio.ariandi@mmsgroup.co.id"},
+			"recipients":     []string{"imam.dwicaksono@mmsgroup.co.id", "eldin.akbar@mmsgroup.co.id"},
 			"message":        "Akses folder diberikan melalui sistem.",
 			"requireSignIn":  true,
-			"sendInvitation": false,
+			"sendInvitation": true,
 			"roles":          []string{access.SharepointRole.RolePermission},
 		}
 		fmt.Print(resty.New().JSONMarshal(shareBody))

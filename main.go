@@ -1,6 +1,7 @@
 package main
 
 import (
+	"bufio"
 	"converter_blob/database"
 	"converter_blob/logs"
 	"converter_blob/sharepoint"
@@ -12,14 +13,18 @@ import (
 	"fmt"
 	"io/ioutil"
 	"log"
+	"math"
 	"os"
 	"path/filepath"
 	"strconv"
 	"strings"
+	"sync"
+	"sync/atomic"
 	"time"
 
 	"github.com/joho/godotenv"
 	_ "github.com/lib/pq"
+	"github.com/schollz/progressbar/v3"
 )
 
 const (
@@ -38,7 +43,7 @@ func main() {
 	folderPath := flag.String("folder", "", "Path ke folder PDF untuk diupload")
 	extractFlag := flag.Bool("extract", false, "Ekstrak semua file dari DB ke folder")
 	versionFlag := flag.Bool("version", false, "Tampilkan versi aplikasi")
-	withUploadSharepointFlag := flag.Bool("with-upload-sp", false, "tidak Sertakan upload ke SharePoint")
+	withUploadSharepointFlag := flag.Bool("with-upload-sp", true, "Sertakan upload ke SharePoint")
 
 	// Baru parse SEKALI saja
 	flag.Parse()
@@ -153,6 +158,222 @@ func uploadFolder(db *sql.DB, folder string) {
 }
 
 func extractAllFiles(db *sql.DB, withUploadSharepoint bool) error {
+	// 1. First extract all files to local folder
+	query := `
+        SELECT doc_meta.filename, doc_meta.mime_type, doc_meta.file_type, 
+               fl.fullpath, COALESCE(doc_bl.pdf, lo_get(doc_bl.binary)), fl.id
+        FROM teradocu.document_binary_large doc_bl
+        INNER JOIN teradocu.document doc ON doc.id = doc_bl.document_id
+        INNER JOIN teradocu.document_metadata doc_meta ON doc.id = doc_meta.document_id
+        INNER JOIN teradocu.folder fl ON doc.folder_id = fl.id
+        WHERE fl.fullpath LIKE '%REPOSITORY%'
+        AND doc_bl.version = (
+            SELECT MAX(version) 
+            FROM teradocu.document_binary_large 
+            WHERE document_id = doc_bl.document_id
+        )
+    `
+
+	stmt, err := db.Prepare(query)
+	if err != nil {
+		return fmt.Errorf("failed to prepare statement: %w", err)
+	}
+	defer stmt.Close()
+
+	rows, err := stmt.Query()
+	if err != nil {
+		return fmt.Errorf("query failed: %w", err)
+	}
+	defer rows.Close()
+
+	// Create metadata CSV
+	metaFile, err := os.Create("extracted_metadata.csv")
+	if err != nil {
+		return fmt.Errorf("failed to create CSV: %w", err)
+	}
+	defer metaFile.Close()
+
+	writer := csv.NewWriter(metaFile)
+	defer writer.Flush()
+	writer.Write([]string{"file_name", "file_type", "mime_type", "full_path", "saved_path", "size_mb"})
+	var count int32
+	timestamp := time.Now().Format("2006-01-02T15-04-05")
+	startTime := time.Now()
+	var totalSizeMBUint uint64 // atomic float64 workaround
+
+	// Track all extracted files for later upload
+	var extractedFiles []struct {
+		localPath      string
+		sharePointPath string
+		sizeMB         float64
+	}
+
+	var mu sync.Mutex // Protects extractedFiles and CSV writer
+
+	for rows.Next() {
+		var (
+			fileName, mimeType, fileType, fullPath string
+			fileData                               []byte
+			folderId                               string
+		)
+
+		if err := rows.Scan(&fileName, &mimeType, &fileType, &fullPath, &fileData, &folderId); err != nil {
+			fmt.Printf("❌ Failed to scan row: %v\n", err)
+			continue
+		}
+		sizeMB := float64(len(fileData)) / (1024 * 1024)
+		atomic.AddInt32(&count, 1)
+		for {
+			old := atomic.LoadUint64(&totalSizeMBUint)
+			new := math.Float64bits(math.Float64frombits(old) + sizeMB)
+			if atomic.CompareAndSwapUint64(&totalSizeMBUint, old, new) {
+				break
+			}
+		}
+
+		safeFolder := filepath.Join(exportFolder, filepath.FromSlash(fullPath))
+		if err := os.MkdirAll(safeFolder, os.ModePerm); err != nil {
+			fmt.Printf("❌ Failed to create folder %s: %v\n", safeFolder, err)
+			continue
+		}
+
+		outputName := sanitizeFileName(fileName)
+		outputPath := filepath.Join(safeFolder, outputName)
+
+		if err := os.WriteFile(outputPath, fileData, 0644); err != nil {
+			fmt.Printf("❌ Failed to save file %s: %v\n", outputPath, err)
+			continue
+		}
+
+		// Fix extension if needed
+		actualExt, _ := detectFileType(fileData)
+		if currentExt := filepath.Ext(outputPath); actualExt != currentExt && actualExt != "unknown" {
+			newPath := strings.TrimSuffix(outputPath, currentExt) + actualExt
+			if err := os.Rename(outputPath, newPath); err == nil {
+				outputPath = newPath
+			}
+		}
+
+		// Prepare SharePoint path
+		cleanFolderPath := strings.TrimPrefix(outputPath, exportFolder+string(os.PathSeparator))
+		cleanFolderPath = strings.Trim(cleanFolderPath, "/\\")
+		spPath := fmt.Sprintf("%s/%s", timestamp, cleanFolderPath)
+
+		mu.Lock()
+		extractedFiles = append(extractedFiles, struct {
+			localPath      string
+			sharePointPath string
+			sizeMB         float64
+		}{
+			localPath:      outputPath,
+			sharePointPath: spPath,
+			sizeMB:         sizeMB,
+		})
+
+		// Write to CSV
+		writer.Write([]string{
+			fileName,
+			fileType,
+			mimeType,
+			fullPath,
+			outputPath,
+			fmt.Sprintf("%.2f", sizeMB),
+		})
+		mu.Unlock()
+
+		fmt.Printf("📄 [%d] %s → %s (%.2f MB)\n",
+			count,
+			fileName,
+			outputPath,
+			sizeMB,
+		)
+	}
+
+	fmt.Printf("\n✅ Extraction completed!\n")
+	fmt.Printf("📂 Total files extracted: %d\n", count)
+	fmt.Printf("📦 Total size extracted: %.2f MB\n", math.Float64frombits(atomic.LoadUint64(&totalSizeMBUint)))
+	fmt.Printf("⏱️  Extraction time: %s\n", time.Since(startTime))
+
+	withUploadSharepoint = true
+	// 2. Now upload all files to SharePoint in bulk
+	if withUploadSharepoint {
+		fmt.Println("\n🚀 Starting SharePoint upload process...")
+		uploadStart := time.Now()
+		var uploadCount int32 = 0
+		var uploadWg sync.WaitGroup
+		uploadSem := make(chan struct{}, 5) // Limit concurrent uploads
+
+		// Create a progress bar
+		bar := progressbar.Default(int64(len(extractedFiles)),
+			"Uploading to SharePoint")
+
+		for _, file := range extractedFiles {
+			uploadWg.Add(1)
+			uploadSem <- struct{}{}
+
+			go func(f struct {
+				localPath      string
+				sharePointPath string
+				sizeMB         float64
+			}) {
+				defer uploadWg.Done()
+				defer func() { <-uploadSem }()
+				defer bar.Add(1)
+
+				_, err := sharepoint.UploadFile(f.localPath, f.sharePointPath)
+				if err != nil {
+					fmt.Printf("\n❌ Failed to upload %s: %v\n", f.localPath, err)
+				} else {
+					atomic.AddInt32(&uploadCount, 1)
+					fmt.Printf("\n✔️ Uploaded %s (%.2f MB) to %s\n",
+						filepath.Base(f.localPath),
+						f.sizeMB,
+						f.sharePointPath)
+				}
+			}(file)
+		}
+
+		uploadWg.Wait()
+		bar.Finish()
+
+		fmt.Printf("\n✅ SharePoint upload completed!\n")
+		fmt.Printf("📤 Successfully uploaded %d/%d files\n", uploadCount, len(extractedFiles))
+		fmt.Printf("⏱️  Upload time: %s\n", time.Since(uploadStart))
+	}
+
+	// Save metadata and user access
+	logWriter := logs.SetLog("sharepoint_log.txt")
+	logs.LogFlush(logWriter)
+
+	if err := SaveUserFolder(db, timestamp); err != nil {
+		return fmt.Errorf("failed to save folder access: %w", err)
+	}
+	fmt.Println("✅ Successfully saved folder access to users.json")
+
+	if err := SaveListUsers(); err != nil {
+		return fmt.Errorf("failed to save user list: %w", err)
+	}
+	fmt.Println("✅ Successfully saved user list to list_user.json")
+
+	return nil
+}
+
+// Helper function for buffered file writing
+func writeFileWithBuffer(path string, data []byte) error {
+	file, err := os.Create(path)
+	if err != nil {
+		return err
+	}
+	defer file.Close()
+
+	writer := bufio.NewWriterSize(file, 32*1024) // 32KB buffer
+	if _, err := writer.Write(data); err != nil {
+		return err
+	}
+	return writer.Flush()
+}
+
+func extractAllFilesOld(db *sql.DB, withUploadSharepoint bool) error {
 	rows, err := db.Query(` 
 		SELECT DISTINCT ON (doc_bl.document_id)
     doc_meta.filename AS file_name,
@@ -166,9 +387,8 @@ FROM teradocu.document_binary_large doc_bl
 INNER JOIN teradocu.document doc ON doc.id = doc_bl.document_id
 INNER JOIN teradocu.document_metadata doc_meta ON doc.id = doc_meta.document_id
 INNER JOIN teradocu.folder fl ON doc.folder_id = fl.id
-where fl.fullpath LIKE '%IT DEVELOPMENT%'
+where fl.fullpath LIKE '%REPOSITORY%'
 ORDER BY doc_bl.document_id, doc_bl.version DESC
-limit 10
 	`)
 	if err != nil {
 		return fmt.Errorf("gagal query: %w", err)
@@ -187,6 +407,7 @@ limit 10
 	count := 0
 	// Timestamp format (tanpa karakter ":" karena ilegal di SharePoint paths)
 	timestamp := time.Now().Format("2006-01-02T15-04-05") // folder → user set
+	startTime := time.Now()
 
 	for rows.Next() {
 		var (
@@ -289,52 +510,54 @@ limit 10
 		count++
 	}
 
-	SaveUserFolder(db, timestamp)
-
-	SaveListUsers()
-
 	logWriter := logs.SetLog("sharepoint_log.txt")
 	logs.LogFlush(logWriter)
 
 	// Ambil data user-folder dari users.json
-	file, err := os.Open(fileUserAccess)
-	if err != nil {
-		log.Printf("❌ Gagal membuka %s: %v", fileUserAccess, err)
-	} else {
-		defer file.Close()
-		type User struct {
-			FolderId    string              `json:"folder_id"`
-			FolderPath  string              `json:"folder_path"`
-			EmailAccess []types.EmailAccess `json:"email_access"`
-		}
-		var users []User
-		decoder := json.NewDecoder(file)
-		if err := decoder.Decode(&users); err != nil {
-			log.Printf("❌ Gagal decode %s: %v", fileUserAccess, err)
-		} else {
-			for _, user := range users {
-				var emails []string
-				for _, ea := range user.EmailAccess {
-					emails = append(emails, ea.Email)
-				}
-				log.Println("📂 Berbagi folder:", user.FolderPath, "ke", emails)
-				_ = sharepoint.ShareFolderOnly(user.FolderPath, user.EmailAccess)
+	// file, err := os.Open(fileUserAccess)
+	// if err != nil {
+	// 	log.Printf("❌ Gagal membuka %s: %v", fileUserAccess, err)
+	// } else {
+	// 	defer file.Close()
+	// 	type User struct {
+	// 		FolderId    string              `json:"folder_id"`
+	// 		FolderPath  string              `json:"folder_path"`
+	// 		EmailAccess []types.EmailAccess `json:"email_access"`
+	// 	}
+	// 	var users []User
+	// 	decoder := json.NewDecoder(file)
+	// 	if err := decoder.Decode(&users); err != nil {
+	// 		log.Printf("❌ Gagal decode %s: %v", fileUserAccess, err)
+	// 	} else {
+	// 		for _, user := range users {
+	// 			var emails []string
+	// 			for _, ea := range user.EmailAccess {
+	// 				emails = append(emails, ea.Email)
+	// 			}
+	// 			log.Println("📂 Berbagi folder:", user.FolderPath, "ke", emails)
+	// 			_ = sharepoint.ShareFolderOnly(user.FolderPath, user.EmailAccess)
 
-				if err := sharepoint.GetAccessListPermission(user.FolderPath); err != nil {
-					log.Printf("❌ Gagal mendapatkan daftar akses folder: %v", err)
-				}
+	// 			// if err := sharepoint.GetAccessListPermission(user.FolderPath); err != nil {
+	// 			// 	log.Printf("❌ Gagal mendapatkan daftar akses folder: %v", err)
+	// 			// }
 
-				// if err == nil {
-				// 	logWriter.WriteString(fmt.Sprintf("[%s] SHARED %s to %v\n", time.Now().Format(time.RFC3339), user.FolderPath, emails))
-				// 	log.Println("📂 Berhasil share folder:", user.FolderPath, "ke", emails)
-				// } else {
-				// 	logWriter.WriteString(fmt.Sprintf("[%s] ERROR %s: %v\n", time.Now().Format(time.RFC3339), user.FolderPath, err))
-				// 	log.Println("❌ Gagal share folder:", user.FolderPath, "ke", emails, "-", err)
-				// }
-			}
-		}
-	}
+	// 			// if err == nil {
+	// 			// 	logWriter.WriteString(fmt.Sprintf("[%s] SHARED %s to %v\n", time.Now().Format(time.RFC3339), user.FolderPath, emails))
+	// 			// 	log.Println("📂 Berhasil share folder:", user.FolderPath, "ke", emails)
+	// 			// } else {
+	// 			// 	logWriter.WriteString(fmt.Sprintf("[%s] ERROR %s: %v\n", time.Now().Format(time.RFC3339), user.FolderPath, err))
+	// 			// 	log.Println("❌ Gagal share folder:", user.FolderPath, "ke", emails, "-", err)
+	// 			// }
+	// 		}
+	// 	}
+	// }
 	fmt.Printf("✅ Total file diekstrak: %d\n", count)
+	fmt.Printf("Waktu selesai: %s\n", time.Since(startTime))
+
+	SaveUserFolder(db, timestamp)
+	fmt.Println("✅ Berhasil menyimpan akses folder ke users.json")
+	SaveListUsers()
+	fmt.Println("✅ Berhasil menyimpan daftar user ke list_user.json")
 
 	// check permission folder
 
@@ -490,7 +713,7 @@ func sanitizeFileName(name string) string {
 
 // SaveUserFolder saves user access to JSON file.
 // If prefixAdditional is not set (""), it defaults to "pdf_exports/".
-func SaveUserFolder(db *sql.DB, prefixAdditional ...string) {
+func SaveUserFolder(db *sql.DB, prefixAdditional ...string) error {
 	prefix := ""
 	if len(prefixAdditional) > 0 && prefixAdditional[0] != "" {
 		prefix = prefixAdditional[0]
@@ -499,6 +722,7 @@ func SaveUserFolder(db *sql.DB, prefixAdditional ...string) {
 	listUserFolder, err := GetUserByProfileId("MMSGI_IT_DEVELOPMENT", db)
 	if err != nil {
 		log.Fatalf("❌ Gagal mendapatkan akses folder: %v", err)
+		return err
 	}
 
 	logWriterUserAccess := logs.SetLog("user_access.txt")
@@ -509,8 +733,13 @@ func SaveUserFolder(db *sql.DB, prefixAdditional ...string) {
 		folderPath := prefix + userAccess.FolderPath
 		fID := userAccess.FolderId
 
-		SaveUser(fID, folderPath, emailAccess)
+		if err := SaveUser(fID, folderPath, emailAccess); err != nil {
+			log.Printf("❌ Gagal menyimpan akses folder %s: %v", fID, err)
+			return err
+		}
 	}
+
+	return nil
 }
 
 func SaveUser(folderId string, folderPath string, email types.EmailAccess) error {
@@ -581,10 +810,11 @@ func SaveUser(folderId string, folderPath string, email types.EmailAccess) error
 
 }
 
-func SaveListUsers() {
+func SaveListUsers() error {
 	file, err := os.Open(fileUserAccess)
 	if err != nil {
 		log.Fatalf("❌ Gagal membuka file %s: %v", fileUserAccess, err)
+		return err
 	}
 	defer file.Close()
 
@@ -616,6 +846,7 @@ func SaveListUsers() {
 	outFile, err := os.Create("list_user.json")
 	if err != nil {
 		log.Fatalf("❌ Gagal membuat list_user.json: %v", err)
+		return err
 	}
 	defer outFile.Close()
 
@@ -623,9 +854,12 @@ func SaveListUsers() {
 	encoder.SetIndent("", "  ")
 	if err := encoder.Encode(emails); err != nil {
 		log.Fatalf("❌ Gagal encode list_user.json: %v", err)
+		return err
 	}
 
 	fmt.Println("✅ list_user.json berhasil dibuat.")
+
+	return nil
 }
 
 // GetFolderRoleAccessByRole returns the FolderRoleAccess with the given role, or nil if not found.
