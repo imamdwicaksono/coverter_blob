@@ -184,8 +184,8 @@ func uploadFolder(db *sql.DB, folder string) {
 		}
 	}
 }
+
 func loadLargeObject(db *sql.DB, oid uint32) ([]byte, error) {
-	// Use a raw connection to access the underlying driver connection
 	conn, err := db.Conn(context.Background())
 	if err != nil {
 		return nil, fmt.Errorf("failed to get db conn: %w", err)
@@ -193,14 +193,9 @@ func loadLargeObject(db *sql.DB, oid uint32) ([]byte, error) {
 	defer conn.Close()
 
 	var data []byte
-	err = conn.Raw(func(driverConn interface{}) error {
-		// Use SQL to export the large object to bytea
-		row := db.QueryRow("SELECT lo_get($1)", oid)
-		return row.Scan(&data)
-	})
-
-	if err != nil {
-		return nil, err
+	row := conn.QueryRowContext(context.Background(), "SELECT lo_get($1)", oid)
+	if err := row.Scan(&data); err != nil {
+		return nil, fmt.Errorf("failed to read large object: %w", err)
 	}
 	return data, nil
 }
@@ -216,9 +211,18 @@ func extractAllFiles(db *sql.DB, withUploadSharepoint bool, start int, end int) 
 	}
 	defer logFile.Close()
 
-	multi := io.MultiWriter(os.Stdout, logFile)
-	log.SetOutput(multi)
+	log.SetOutput(io.MultiWriter(os.Stdout, logFile))
 	log.SetFlags(log.LstdFlags | log.Lshortfile)
+
+	// Validate pagination
+	if start != 0 || end != 0 {
+		if start < 0 {
+			start = 0
+		}
+		if end <= start {
+			end = start + 100
+		}
+	}
 
 	query := `
 		WITH latest_version AS (
@@ -234,27 +238,16 @@ func extractAllFiles(db *sql.DB, withUploadSharepoint bool, start int, end int) 
 		INNER JOIN teradocu.document_metadata doc_meta ON doc.id = doc_meta.document_id
 		INNER JOIN teradocu.folder fl ON doc.folder_id = fl.id
 		WHERE fl.fullpath ILIKE '%MMS GROUP INDONESIA/IT/IT DEVELOPMENT%'
-		
 	`
 
-	if start == 0 && end == 0 {
-
+	var rows *sql.Rows
+	if end != 0 {
+		query += " LIMIT $1 OFFSET $2"
+		rows, err = db.Query(query, end-start+1, start)
 	} else {
-		if end <= start {
-			log.Printf("⚠️  Invalid range: start=%d, end=%d. Skipping query.\n", start, end)
-			return nil
-		}
-
-		query += fmt.Sprintf("LIMIT %d OFFSET %d", end-start+1, start)
+		rows, err = db.Query(query)
 	}
 
-	stmt, err := db.Prepare(query)
-	if err != nil {
-		return fmt.Errorf("failed to prepare statement: %w", err)
-	}
-	defer stmt.Close()
-
-	rows, err := stmt.Query()
 	if err != nil {
 		return fmt.Errorf("query failed: %w", err)
 	}
@@ -262,26 +255,26 @@ func extractAllFiles(db *sql.DB, withUploadSharepoint bool, start int, end int) 
 
 	metaFile, err := os.Create("extracted_metadata.csv")
 	if err != nil {
-		return fmt.Errorf("failed to create CSV: %w", err)
+		return fmt.Errorf("failed to create metadata CSV: %w", err)
 	}
 	defer metaFile.Close()
-
 	writer := csv.NewWriter(metaFile)
 	defer writer.Flush()
 	writer.Write([]string{"file_name", "file_type", "mime_type", "full_path", "saved_path", "size_mb"})
-	var count int32
-	timestamp := time.Now().Format("2006-01-02T15-04-05")
-	startTime := time.Now()
-	var totalSizeMBUint uint64
 
 	type extracted struct {
-		localPath      string
-		sharePointPath string
-		sizeMB         float64
+		localPath, sharePointPath string
+		sizeMB                    float64
 	}
 
-	var extractedFiles []extracted
-	var mu sync.Mutex
+	var (
+		extractedFiles  []extracted
+		totalSizeMBUint uint64
+		count           int32
+		startTime       = time.Now()
+		mu              sync.Mutex
+		timestamp       = time.Now().Format("2006-01-02T15-04-05")
+	)
 
 	for rows.Next() {
 		var (
@@ -297,7 +290,7 @@ func extractAllFiles(db *sql.DB, withUploadSharepoint bool, start int, end int) 
 		}
 
 		var fileData []byte
-		if len(pdfData) > 0 {
+		if mimeType == "application/pdf" && len(pdfData) > 0 {
 			fileData = pdfData
 		} else if binaryOid.Valid {
 			fileData, err = loadLargeObject(db, uint32(binaryOid.Int64))
@@ -306,7 +299,7 @@ func extractAllFiles(db *sql.DB, withUploadSharepoint bool, start int, end int) 
 				continue
 			}
 		} else {
-			log.Println("⚠️  No file content found (neither PDF nor binary)")
+			log.Println("⚠️  No valid file content found")
 			continue
 		}
 
@@ -321,11 +314,7 @@ func extractAllFiles(db *sql.DB, withUploadSharepoint bool, start int, end int) 
 		}
 
 		safeFolder := filepath.Join(exportFolder, filepath.FromSlash(fullPath))
-		if err := os.MkdirAll(safeFolder, os.ModePerm); err != nil {
-			log.Printf("❌ Failed to create folder %s: %v\n", safeFolder, err)
-			continue
-		}
-
+		_ = os.MkdirAll(safeFolder, os.ModePerm)
 		outputName := sanitizeFileName(fileName)
 		outputPath := filepath.Join(safeFolder, outputName)
 
@@ -334,6 +323,7 @@ func extractAllFiles(db *sql.DB, withUploadSharepoint bool, start int, end int) 
 			continue
 		}
 
+		// Optional: auto rename by magic
 		actualExt, _ := detectFileType(fileData)
 		if currentExt := filepath.Ext(outputPath); actualExt != currentExt && actualExt != "unknown" {
 			newPath := strings.TrimSuffix(outputPath, currentExt) + actualExt
@@ -342,21 +332,21 @@ func extractAllFiles(db *sql.DB, withUploadSharepoint bool, start int, end int) 
 			}
 		}
 
-		cleanFolderPath := strings.TrimPrefix(outputPath, exportFolder+string(os.PathSeparator))
-		cleanFolderPath = strings.Trim(cleanFolderPath, "/\\")
-		spPath := fmt.Sprintf("%s/%s", timestamp, cleanFolderPath)
+		spPath := fmt.Sprintf("%s/%s", timestamp, strings.TrimPrefix(outputPath, exportFolder+string(os.PathSeparator)))
 
 		mu.Lock()
-		extractedFiles = append(extractedFiles, extracted{
-			localPath:      outputPath,
-			sharePointPath: spPath,
-			sizeMB:         sizeMB,
-		})
+		extractedFiles = append(extractedFiles, extracted{outputPath, spPath, sizeMB})
 		writer.Write([]string{fileName, fileType, mimeType, fullPath, outputPath, fmt.Sprintf("%.2f", sizeMB)})
 		mu.Unlock()
 
 		log.Printf("📄 [%d] %s → %s (%.2f MB)\n", count, fileName, outputPath, sizeMB)
 	}
+
+	log.Printf("✅ Extraction completed — %d files, %.2f MB, elapsed: %s\n",
+		count,
+		math.Float64frombits(atomic.LoadUint64(&totalSizeMBUint)),
+		time.Since(startTime),
+	)
 
 	log.Printf("\n✅ Extraction completed!\n")
 	log.Printf("📂 Total files extracted: %d\n", count)
