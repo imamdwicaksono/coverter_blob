@@ -226,7 +226,7 @@ func extractAllFiles(db *sql.DB, withUploadSharepoint bool, start int, end int) 
 
 	folder_path := os.Getenv("FOLDER_PATH")
 	if folder_path == "" {
-		folder_path = "REPOSITORY/MMS GROUP INDONESIA/IT/IT Development/IT PMBA"
+		folder_path = "REPOSITORY/MMS GROUP INDONESIA/IT/IT Development"
 	}
 	query := `
 		WITH latest_version AS (
