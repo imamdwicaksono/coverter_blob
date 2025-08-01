@@ -224,6 +224,10 @@ func extractAllFiles(db *sql.DB, withUploadSharepoint bool, start int, end int) 
 		}
 	}
 
+	folder_path := os.Getenv("FOLDER_PATH")
+	if folder_path == "" {
+		folder_path = "REPOSITORY/MMS GROUP INDONESIA/IT/IT Development/IT PMBA"
+	}
 	query := `
 		WITH latest_version AS (
 			SELECT document_id, MAX(version) AS version
@@ -237,7 +241,7 @@ func extractAllFiles(db *sql.DB, withUploadSharepoint bool, start int, end int) 
 		INNER JOIN teradocu.document doc ON doc.id = doc_bl.document_id
 		INNER JOIN teradocu.document_metadata doc_meta ON doc.id = doc_meta.document_id
 		INNER JOIN teradocu.folder fl ON doc.folder_id = fl.id
-		WHERE fl.fullpath ILIKE '%MMS GROUP INDONESIA/IT/IT DEVELOPMENT%'
+		WHERE fl.fullpath ILIKE '%` + folder_path + `%'
 	`
 
 	var rows *sql.Rows
