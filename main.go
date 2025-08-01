@@ -117,8 +117,8 @@ func main() {
 	case *folderPath != "":
 		uploadFolder(db, *folderPath)
 	case *extractFlag:
-		start := 1
-		end := 1000 // Default values
+		start := 0
+		end := 0 // Default values
 
 		if *startFlag > 0 {
 			start = *startFlag
@@ -237,11 +237,16 @@ func extractAllFiles(db *sql.DB, withUploadSharepoint bool, start int, end int) 
 		
 	`
 
-	if end <= start {
-		log.Printf("⚠️  Invalid range: start=%d, end=%d. Skipping query.\n", start, end)
-		return nil
+	if start == 0 && end == 0 {
+
+	} else {
+		if end <= start {
+			log.Printf("⚠️  Invalid range: start=%d, end=%d. Skipping query.\n", start, end)
+			return nil
+		}
+
+		query += fmt.Sprintf("LIMIT %d OFFSET %d", end-start+1, start)
 	}
-	query += fmt.Sprintf("LIMIT %d OFFSET %d", end-start+1, start)
 
 	stmt, err := db.Prepare(query)
 	if err != nil {
