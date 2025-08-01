@@ -47,8 +47,8 @@ func main() {
 	folderPath := flag.String("folder", "", "Path ke folder PDF untuk diupload")
 	extractFlag := flag.Bool("extract", false, "Ekstrak semua file dari DB ke folder")
 	versionFlag := flag.Bool("version", false, "Tampilkan versi aplikasi")
-	startFlag := flag.Int("start", 1, "start dari offset tertentu (default 1)")
-	endFlag := flag.Int("end", 1000, "end pada offset tertentu (default 1000)")
+	startFlag := flag.Int("start", 0, "start dari offset tertentu (default 0)")
+	endFlag := flag.Int("end", 0, "end pada offset tertentu (default 0)")
 	withUploadSharepointFlag := flag.Bool("with-upload-sp", false, "Sertakan upload ke SharePoint")
 
 	// Ensure data directory exists
