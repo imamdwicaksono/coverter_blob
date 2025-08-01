@@ -1,6 +1,8 @@
 pdf_exports/*
-
+pdf_exports_dev/*
 .env
 
 bin/*
 builds/*
+
+logs/*.txt

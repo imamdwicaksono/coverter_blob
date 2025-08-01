@@ -2,6 +2,7 @@ package main
 
 import (
 	"bufio"
+	"context"
 	"converter_blob/database"
 	"converter_blob/logs"
 	"converter_blob/sharepoint"
@@ -11,6 +12,7 @@ import (
 	"encoding/json"
 	"flag"
 	"fmt"
+	"io"
 	"io/ioutil"
 	"log"
 	"math"
@@ -30,6 +32,8 @@ import (
 const (
 	exportFolder   = "pdf_exports"
 	fileUserAccess = "users.json"
+	// Version        = "1.0.0"
+	// BuildDate      = "2024-06-09T00:00:00Z" // Update this with your build date
 )
 
 func printVersion() {
@@ -43,7 +47,20 @@ func main() {
 	folderPath := flag.String("folder", "", "Path ke folder PDF untuk diupload")
 	extractFlag := flag.Bool("extract", false, "Ekstrak semua file dari DB ke folder")
 	versionFlag := flag.Bool("version", false, "Tampilkan versi aplikasi")
-	withUploadSharepointFlag := flag.Bool("with-upload-sp", true, "Sertakan upload ke SharePoint")
+	withUploadSharepointFlag := flag.Bool("with-upload-sp", false, "Sertakan upload ke SharePoint")
+
+	// Ensure data directory exists
+	if _, err := os.Stat("data"); os.IsNotExist(err) {
+		os.Mkdir("data", 0755)
+	}
+
+	// Check if .env exists, copy from .env.example if not
+	if _, err := os.Stat("data/.env"); os.IsNotExist(err) {
+		if _, err := os.Stat(".env.example"); !os.IsNotExist(err) {
+			src, _ := os.ReadFile(".env.example")
+			os.WriteFile("data/.env", src, 0644)
+		}
+	}
 
 	// Baru parse SEKALI saja
 	flag.Parse()
@@ -98,6 +115,7 @@ func main() {
 	case *folderPath != "":
 		uploadFolder(db, *folderPath)
 	case *extractFlag:
+
 		if err := extractAllFiles(db, *withUploadSharepointFlag); err != nil {
 			log.Fatalf("❌ Ekstrak gagal: %v", err)
 		}
@@ -156,23 +174,58 @@ func uploadFolder(db *sql.DB, folder string) {
 		}
 	}
 }
+func loadLargeObject(db *sql.DB, oid uint32) ([]byte, error) {
+	// Use a raw connection to access the underlying driver connection
+	conn, err := db.Conn(context.Background())
+	if err != nil {
+		return nil, fmt.Errorf("failed to get db conn: %w", err)
+	}
+	defer conn.Close()
+
+	var data []byte
+	err = conn.Raw(func(driverConn interface{}) error {
+		// Use SQL to export the large object to bytea
+		row := db.QueryRow("SELECT lo_get($1)", oid)
+		return row.Scan(&data)
+	})
+
+	if err != nil {
+		return nil, err
+	}
+	return data, nil
+}
 
 func extractAllFiles(db *sql.DB, withUploadSharepoint bool) error {
-	// 1. First extract all files to local folder
+	datetime := time.Now().Format("2006-01-02T15-04-05")
+	logPath := "logs/extraction_log_" + datetime + ".txt"
+	_ = os.MkdirAll("logs", os.ModePerm)
+
+	logFile, err := os.Create(logPath)
+	if err != nil {
+		return fmt.Errorf("failed to create log file: %w", err)
+	}
+	defer logFile.Close()
+
+	multi := io.MultiWriter(os.Stdout, logFile)
+	log.SetOutput(multi)
+	log.SetFlags(log.LstdFlags | log.Lshortfile)
+
 	query := `
-        SELECT doc_meta.filename, doc_meta.mime_type, doc_meta.file_type, 
-               fl.fullpath, COALESCE(doc_bl.pdf, lo_get(doc_bl.binary)), fl.id
-        FROM teradocu.document_binary_large doc_bl
-        INNER JOIN teradocu.document doc ON doc.id = doc_bl.document_id
-        INNER JOIN teradocu.document_metadata doc_meta ON doc.id = doc_meta.document_id
-        INNER JOIN teradocu.folder fl ON doc.folder_id = fl.id
-        WHERE fl.fullpath LIKE '%REPOSITORY%'
-        AND doc_bl.version = (
-            SELECT MAX(version) 
-            FROM teradocu.document_binary_large 
-            WHERE document_id = doc_bl.document_id
-        )
-    `
+		WITH latest_version AS (
+			SELECT document_id, MAX(version) AS version
+			FROM teradocu.document_binary_large
+			GROUP BY document_id
+		)
+		SELECT doc_meta.filename, doc_meta.mime_type, doc_meta.file_type,
+			fl.fullpath, doc_bl.pdf, doc_bl.binary, fl.id
+		FROM teradocu.document_binary_large doc_bl
+		JOIN latest_version lv ON lv.document_id = doc_bl.document_id AND lv.version = doc_bl.version
+		INNER JOIN teradocu.document doc ON doc.id = doc_bl.document_id
+		INNER JOIN teradocu.document_metadata doc_meta ON doc.id = doc_meta.document_id
+		INNER JOIN teradocu.folder fl ON doc.folder_id = fl.id
+		WHERE fl.fullpath ILIKE '%MMS GROUP INDONESIA/IT/IT DEVELOPMENT%'
+		LIMIT 1;
+	`
 
 	stmt, err := db.Prepare(query)
 	if err != nil {
@@ -186,7 +239,6 @@ func extractAllFiles(db *sql.DB, withUploadSharepoint bool) error {
 	}
 	defer rows.Close()
 
-	// Create metadata CSV
 	metaFile, err := os.Create("extracted_metadata.csv")
 	if err != nil {
 		return fmt.Errorf("failed to create CSV: %w", err)
@@ -199,28 +251,44 @@ func extractAllFiles(db *sql.DB, withUploadSharepoint bool) error {
 	var count int32
 	timestamp := time.Now().Format("2006-01-02T15-04-05")
 	startTime := time.Now()
-	var totalSizeMBUint uint64 // atomic float64 workaround
+	var totalSizeMBUint uint64
 
-	// Track all extracted files for later upload
-	var extractedFiles []struct {
+	type extracted struct {
 		localPath      string
 		sharePointPath string
 		sizeMB         float64
 	}
 
-	var mu sync.Mutex // Protects extractedFiles and CSV writer
+	var extractedFiles []extracted
+	var mu sync.Mutex
 
 	for rows.Next() {
 		var (
 			fileName, mimeType, fileType, fullPath string
-			fileData                               []byte
+			pdfData                                []byte
+			binaryOid                              sql.NullInt64
 			folderId                               string
 		)
 
-		if err := rows.Scan(&fileName, &mimeType, &fileType, &fullPath, &fileData, &folderId); err != nil {
-			fmt.Printf("❌ Failed to scan row: %v\n", err)
+		if err := rows.Scan(&fileName, &mimeType, &fileType, &fullPath, &pdfData, &binaryOid, &folderId); err != nil {
+			log.Printf("❌ Failed to scan row: %v\n", err)
 			continue
 		}
+
+		var fileData []byte
+		if len(pdfData) > 0 {
+			fileData = pdfData
+		} else if binaryOid.Valid {
+			fileData, err = loadLargeObject(db, uint32(binaryOid.Int64))
+			if err != nil {
+				log.Printf("❌ Failed to load binary LO %d: %v\n", binaryOid.Int64, err)
+				continue
+			}
+		} else {
+			log.Println("⚠️  No file content found (neither PDF nor binary)")
+			continue
+		}
+
 		sizeMB := float64(len(fileData)) / (1024 * 1024)
 		atomic.AddInt32(&count, 1)
 		for {
@@ -233,7 +301,7 @@ func extractAllFiles(db *sql.DB, withUploadSharepoint bool) error {
 
 		safeFolder := filepath.Join(exportFolder, filepath.FromSlash(fullPath))
 		if err := os.MkdirAll(safeFolder, os.ModePerm); err != nil {
-			fmt.Printf("❌ Failed to create folder %s: %v\n", safeFolder, err)
+			log.Printf("❌ Failed to create folder %s: %v\n", safeFolder, err)
 			continue
 		}
 
@@ -241,11 +309,10 @@ func extractAllFiles(db *sql.DB, withUploadSharepoint bool) error {
 		outputPath := filepath.Join(safeFolder, outputName)
 
 		if err := os.WriteFile(outputPath, fileData, 0644); err != nil {
-			fmt.Printf("❌ Failed to save file %s: %v\n", outputPath, err)
+			log.Printf("❌ Failed to save file %s: %v\n", outputPath, err)
 			continue
 		}
 
-		// Fix extension if needed
 		actualExt, _ := detectFileType(fileData)
 		if currentExt := filepath.Ext(outputPath); actualExt != currentExt && actualExt != "unknown" {
 			newPath := strings.TrimSuffix(outputPath, currentExt) + actualExt
@@ -254,68 +321,40 @@ func extractAllFiles(db *sql.DB, withUploadSharepoint bool) error {
 			}
 		}
 
-		// Prepare SharePoint path
 		cleanFolderPath := strings.TrimPrefix(outputPath, exportFolder+string(os.PathSeparator))
 		cleanFolderPath = strings.Trim(cleanFolderPath, "/\\")
 		spPath := fmt.Sprintf("%s/%s", timestamp, cleanFolderPath)
 
 		mu.Lock()
-		extractedFiles = append(extractedFiles, struct {
-			localPath      string
-			sharePointPath string
-			sizeMB         float64
-		}{
+		extractedFiles = append(extractedFiles, extracted{
 			localPath:      outputPath,
 			sharePointPath: spPath,
 			sizeMB:         sizeMB,
 		})
-
-		// Write to CSV
-		writer.Write([]string{
-			fileName,
-			fileType,
-			mimeType,
-			fullPath,
-			outputPath,
-			fmt.Sprintf("%.2f", sizeMB),
-		})
+		writer.Write([]string{fileName, fileType, mimeType, fullPath, outputPath, fmt.Sprintf("%.2f", sizeMB)})
 		mu.Unlock()
 
-		fmt.Printf("📄 [%d] %s → %s (%.2f MB)\n",
-			count,
-			fileName,
-			outputPath,
-			sizeMB,
-		)
+		log.Printf("📄 [%d] %s → %s (%.2f MB)\n", count, fileName, outputPath, sizeMB)
 	}
 
-	fmt.Printf("\n✅ Extraction completed!\n")
-	fmt.Printf("📂 Total files extracted: %d\n", count)
-	fmt.Printf("📦 Total size extracted: %.2f MB\n", math.Float64frombits(atomic.LoadUint64(&totalSizeMBUint)))
-	fmt.Printf("⏱️  Extraction time: %s\n", time.Since(startTime))
+	log.Printf("\n✅ Extraction completed!\n")
+	log.Printf("📂 Total files extracted: %d\n", count)
+	log.Printf("📦 Total size extracted: %.2f MB\n", math.Float64frombits(atomic.LoadUint64(&totalSizeMBUint)))
+	log.Printf("⏱️  Extraction time: %s\n", time.Since(startTime))
 
-	withUploadSharepoint = true
-	// 2. Now upload all files to SharePoint in bulk
 	if withUploadSharepoint {
 		fmt.Println("\n🚀 Starting SharePoint upload process...")
 		uploadStart := time.Now()
 		var uploadCount int32 = 0
 		var uploadWg sync.WaitGroup
-		uploadSem := make(chan struct{}, 5) // Limit concurrent uploads
-
-		// Create a progress bar
-		bar := progressbar.Default(int64(len(extractedFiles)),
-			"Uploading to SharePoint")
+		uploadSem := make(chan struct{}, 5)
+		bar := progressbar.Default(int64(len(extractedFiles)), "Uploading to SharePoint")
 
 		for _, file := range extractedFiles {
 			uploadWg.Add(1)
 			uploadSem <- struct{}{}
 
-			go func(f struct {
-				localPath      string
-				sharePointPath string
-				sizeMB         float64
-			}) {
+			go func(f extracted) {
 				defer uploadWg.Done()
 				defer func() { <-uploadSem }()
 				defer bar.Add(1)
@@ -325,14 +364,10 @@ func extractAllFiles(db *sql.DB, withUploadSharepoint bool) error {
 					fmt.Printf("\n❌ Failed to upload %s: %v\n", f.localPath, err)
 				} else {
 					atomic.AddInt32(&uploadCount, 1)
-					fmt.Printf("\n✔️ Uploaded %s (%.2f MB) to %s\n",
-						filepath.Base(f.localPath),
-						f.sizeMB,
-						f.sharePointPath)
+					fmt.Printf("\n✔️ Uploaded %s (%.2f MB) to %s\n", filepath.Base(f.localPath), f.sizeMB, f.sharePointPath)
 				}
 			}(file)
 		}
-
 		uploadWg.Wait()
 		bar.Finish()
 
@@ -341,19 +376,18 @@ func extractAllFiles(db *sql.DB, withUploadSharepoint bool) error {
 		fmt.Printf("⏱️  Upload time: %s\n", time.Since(uploadStart))
 	}
 
-	// Save metadata and user access
-	logWriter := logs.SetLog("sharepoint_log.txt")
-	logs.LogFlush(logWriter)
+	// logWriter := logs.SetLog("sharepoint_log.txt")
+	// logs.LogFlush(logWriter)
 
-	if err := SaveUserFolder(db, timestamp); err != nil {
-		return fmt.Errorf("failed to save folder access: %w", err)
-	}
-	fmt.Println("✅ Successfully saved folder access to users.json")
+	// if err := SaveUserFolder(db, timestamp); err != nil {
+	// 	return fmt.Errorf("failed to save folder access: %w", err)
+	// }
+	// fmt.Println("✅ Successfully saved folder access to users.json")
 
-	if err := SaveListUsers(); err != nil {
-		return fmt.Errorf("failed to save user list: %w", err)
-	}
-	fmt.Println("✅ Successfully saved user list to list_user.json")
+	// if err := SaveListUsers(); err != nil {
+	// 	return fmt.Errorf("failed to save user list: %w", err)
+	// }
+	// fmt.Println("✅ Successfully saved user list to list_user.json")
 
 	return nil
 }
@@ -496,7 +530,9 @@ ORDER BY doc_bl.document_id, doc_bl.version DESC
 		cleanFolderPath = strings.Trim(cleanFolderPath, "/\\")
 		folderPath := fmt.Sprintf("%s/%s", timestamp, cleanFolderPath)
 
-		sharepoint.UploadFile(outputPath, folderPath)
+		if withUploadSharepoint {
+			sharepoint.UploadFile(outputPath, folderPath)
+		}
 
 		// folderKey := fmt.Sprintf("%s/%s", timestamp, fullPath)
 
@@ -510,8 +546,8 @@ ORDER BY doc_bl.document_id, doc_bl.version DESC
 		count++
 	}
 
-	logWriter := logs.SetLog("sharepoint_log.txt")
-	logs.LogFlush(logWriter)
+	// logWriter := logs.SetLog("sharepoint_log.txt")
+	// logs.LogFlush(logWriter)
 
 	// Ambil data user-folder dari users.json
 	// file, err := os.Open(fileUserAccess)
@@ -554,10 +590,10 @@ ORDER BY doc_bl.document_id, doc_bl.version DESC
 	fmt.Printf("✅ Total file diekstrak: %d\n", count)
 	fmt.Printf("Waktu selesai: %s\n", time.Since(startTime))
 
-	SaveUserFolder(db, timestamp)
-	fmt.Println("✅ Berhasil menyimpan akses folder ke users.json")
-	SaveListUsers()
-	fmt.Println("✅ Berhasil menyimpan daftar user ke list_user.json")
+	// SaveUserFolder(db, timestamp)
+	// fmt.Println("✅ Berhasil menyimpan akses folder ke users.json")
+	// SaveListUsers()
+	// fmt.Println("✅ Berhasil menyimpan daftar user ke list_user.json")
 
 	// check permission folder
 

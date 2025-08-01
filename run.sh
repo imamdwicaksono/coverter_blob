@@ -1,1 +1,1 @@
-go run . --env .env --extract --with-upload-sp
+go run . --env .env --extract
