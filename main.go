@@ -50,6 +50,7 @@ func main() {
 	startFlag := flag.Int("start", 0, "start dari offset tertentu (default 0)")
 	endFlag := flag.Int("end", 0, "end pada offset tertentu (default 0)")
 	withUploadSharepointFlag := flag.Bool("with-upload-sp", false, "Sertakan upload ke SharePoint")
+	noReplace := flag.Bool("no-replace", false, "Jangan timpa file yang sudah ada")
 
 	// Ensure data directory exists
 	if _, err := os.Stat("data"); os.IsNotExist(err) {
@@ -89,6 +90,8 @@ func main() {
 		fmt.Println("   --file <file>    Upload satu file PDF")
 		fmt.Println("   --folder <dir>   Upload semua PDF dari folder")
 		fmt.Println("   --extract        Ekstrak semua PDF dari DB")
+		fmt.Println("   --version        Tampilkan versi aplikasi")
+		fmt.Println("   --no-replace     Jangan timpa file yang sudah ada")
 		fmt.Println("   (opsional) --env <env>  Pilih environment .env.dev / .env.prod")
 		os.Exit(1)
 	}
@@ -126,7 +129,7 @@ func main() {
 		if *endFlag > 0 {
 			end = *endFlag
 		}
-		if err := extractAllFiles(db, *withUploadSharepointFlag, start, end); err != nil {
+		if err := extractAllFiles(db, *withUploadSharepointFlag, start, end, *noReplace); err != nil {
 			log.Fatalf("❌ Ekstrak gagal: %v", err)
 		}
 	default:
@@ -200,7 +203,8 @@ func loadLargeObject(db *sql.DB, oid uint32) ([]byte, error) {
 	return data, nil
 }
 
-func extractAllFiles(db *sql.DB, withUploadSharepoint bool, start int, end int) error {
+func extractAllFiles(db *sql.DB, withUploadSharepoint bool, start int, end int, noReplace bool) error {
+
 	datetime := time.Now().Format("2006-01-02T15-04-05")
 	logPath := "logs/extraction_log_" + datetime + ".txt"
 	_ = os.MkdirAll("logs", os.ModePerm)
@@ -321,6 +325,14 @@ func extractAllFiles(db *sql.DB, withUploadSharepoint bool, start int, end int) 
 		_ = os.MkdirAll(safeFolder, os.ModePerm)
 		outputName := sanitizeFileName(fileName)
 		outputPath := filepath.Join(safeFolder, outputName)
+
+		// Cek jika file sudah ada dan flag noReplace aktif
+		if noReplace {
+			if _, err := os.Stat(outputPath); err == nil {
+				log.Printf("⚠️  Skipping (exists): %s\n", outputPath)
+				continue
+			}
+		}
 
 		if err := os.WriteFile(outputPath, fileData, 0644); err != nil {
 			log.Printf("❌ Failed to save file %s: %v\n", outputPath, err)
