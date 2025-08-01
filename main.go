@@ -47,6 +47,8 @@ func main() {
 	folderPath := flag.String("folder", "", "Path ke folder PDF untuk diupload")
 	extractFlag := flag.Bool("extract", false, "Ekstrak semua file dari DB ke folder")
 	versionFlag := flag.Bool("version", false, "Tampilkan versi aplikasi")
+	startFlag := flag.Int("start", 1, "start dari offset tertentu (default 1)")
+	endFlag := flag.Int("end", 1000, "end pada offset tertentu (default 1000)")
 	withUploadSharepointFlag := flag.Bool("with-upload-sp", false, "Sertakan upload ke SharePoint")
 
 	// Ensure data directory exists
@@ -115,8 +117,16 @@ func main() {
 	case *folderPath != "":
 		uploadFolder(db, *folderPath)
 	case *extractFlag:
+		start := 1
+		end := 1000 // Default values
 
-		if err := extractAllFiles(db, *withUploadSharepointFlag); err != nil {
+		if *startFlag > 0 {
+			start = *startFlag
+		}
+		if *endFlag > 0 {
+			end = *endFlag
+		}
+		if err := extractAllFiles(db, *withUploadSharepointFlag, start, end); err != nil {
 			log.Fatalf("❌ Ekstrak gagal: %v", err)
 		}
 	default:
@@ -195,7 +205,7 @@ func loadLargeObject(db *sql.DB, oid uint32) ([]byte, error) {
 	return data, nil
 }
 
-func extractAllFiles(db *sql.DB, withUploadSharepoint bool) error {
+func extractAllFiles(db *sql.DB, withUploadSharepoint bool, start int, end int) error {
 	datetime := time.Now().Format("2006-01-02T15-04-05")
 	logPath := "logs/extraction_log_" + datetime + ".txt"
 	_ = os.MkdirAll("logs", os.ModePerm)
@@ -224,8 +234,14 @@ func extractAllFiles(db *sql.DB, withUploadSharepoint bool) error {
 		INNER JOIN teradocu.document_metadata doc_meta ON doc.id = doc_meta.document_id
 		INNER JOIN teradocu.folder fl ON doc.folder_id = fl.id
 		WHERE fl.fullpath ILIKE '%MMS GROUP INDONESIA/IT/IT DEVELOPMENT%'
-		LIMIT 1;
+		
 	`
+
+	if end <= start {
+		log.Printf("⚠️  Invalid range: start=%d, end=%d. Skipping query.\n", start, end)
+		return nil
+	}
+	query += fmt.Sprintf("LIMIT %d OFFSET %d", end-start+1, start)
 
 	stmt, err := db.Prepare(query)
 	if err != nil {

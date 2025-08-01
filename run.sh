@@ -1,1 +1,1 @@
-go run . --env .env --extract
+go run . --env .env --extract --start 1 --end 1000
