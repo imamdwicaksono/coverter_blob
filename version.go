@@ -1,4 +1,4 @@
 package main
 
-const Version = "1.0.11"
+const Version = "1.0.12"
 const BuildDate = "2025-18-06"
