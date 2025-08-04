@@ -290,7 +290,7 @@ func extractAllFiles(db *sql.DB, withUploadSharepoint bool, start int, end int, 
 		totalSizeMB    float64
 		count          int32
 		startTime      = time.Now()
-		timestamp      = time.Now().Format("2006-01-02T15-04-05")
+		timestamp      = "" //time.Now().Format("2006-01-02T15-04-05")
 	)
 
 	for rows.Next() {

@@ -6,3 +6,5 @@ bin/*
 builds/*
 
 logs/*.txt
+
+*.log
