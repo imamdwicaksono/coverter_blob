@@ -154,6 +154,10 @@ func GetExtensionFromMime(mimeType string) string {
 		return ".eml"
 	case "text/calendar":
 		return ".ics"
+	case "application/edraw":
+		return ".eddx"
+	case "application/drawio":
+		return ".drawio"
 	default:
 		return ".bin"
 	}
