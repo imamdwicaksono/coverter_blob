@@ -7,7 +7,6 @@ import (
 	"converter_blob/logs"
 	"converter_blob/sharepoint"
 	"converter_blob/types"
-	"converter_blob/utils"
 	"database/sql"
 	"encoding/csv"
 	"encoding/json"
@@ -359,13 +358,13 @@ func extractAllFiles(db *sql.DB, withUploadSharepoint bool, start int, end int, 
 
 		}
 
-		mimeExt := utils.GetExtensionFromMime(mimeType)
-		if currentExt := strings.ToLower(filepath.Ext(outputPath)); mimeExt != currentExt && mimeExt != "" {
-			newPath := strings.TrimSuffix(outputPath, currentExt) + mimeExt
-			if err := os.Rename(outputPath, newPath); err == nil {
-				outputPath = newPath
-			}
-		}
+		// mimeExt := utils.GetExtensionFromMime(mimeType)
+		// if currentExt := strings.ToLower(filepath.Ext(outputPath)); mimeExt != currentExt && mimeExt != "" {
+		// 	newPath := strings.TrimSuffix(outputPath, currentExt) + mimeExt
+		// 	if err := os.Rename(outputPath, newPath); err == nil {
+		// 		outputPath = newPath
+		// 	}
+		// }
 
 		spPath := fmt.Sprintf("%s/%s", timestamp, strings.TrimPrefix(outputPath, exportFolder+string(os.PathSeparator)))
 		extractedFiles = append(extractedFiles, extracted{outputPath, spPath, sizeMB})
@@ -378,6 +377,10 @@ func extractAllFiles(db *sql.DB, withUploadSharepoint bool, start int, end int, 
 	}
 
 	log.Printf("✅ Extracted %d files, %.2f MB, time: %s\n", count, totalSizeMB, time.Since(startTime))
+	log.Printf("\n✅ Extraction completed!\n")
+	log.Printf("📂 Total files extracted: %d\n", count)
+	log.Printf("📦 Total size extracted: %.2f MB\n", totalSizeMB)
+	log.Printf("⏱️  Extraction time: %s\n", time.Since(startTime))
 
 	if withUploadSharepoint || onlyUploadSharepoint {
 		fmt.Println("\n🚀 Starting SharePoint upload...")
