@@ -335,6 +335,7 @@ func extractAllFiles(db *sql.DB, withUploadSharepoint bool, start int, end int, 
 		}
 
 		count++
+		totalSizeMB += sizeMB
 		var outputPath string
 
 		safeFolder := filepath.Join(exportFolder, filepath.FromSlash(fullPath))
