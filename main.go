@@ -30,7 +30,7 @@ import (
 )
 
 const (
-	exportFolder   = "pdf_exports"
+	exportFolder   = "pdf_exports" // Path to save extracted files
 	fileUserAccess = "users.json"
 	// Version        = "1.0.0"
 	// BuildDate      = "2024-06-09T00:00:00Z" // Update this with your build date
@@ -52,6 +52,10 @@ func main() {
 	withUploadSharepointFlag := flag.Bool("with-upload-sp", false, "Sertakan upload ke SharePoint")
 	noReplace := flag.Bool("no-replace", false, "Jangan timpa file yang sudah ada")
 
+	exportFolder := os.Getenv("EXPORT_PATH")
+	if exportFolder == "" {
+		exportFolder = "pdf_exports"
+	}
 	// Ensure data directory exists
 	if _, err := os.Stat("data"); os.IsNotExist(err) {
 		os.Mkdir("data", 0755)
