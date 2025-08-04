@@ -7,6 +7,7 @@ import (
 	"converter_blob/logs"
 	"converter_blob/sharepoint"
 	"converter_blob/types"
+	"converter_blob/utils"
 	"database/sql"
 	"encoding/csv"
 	"encoding/json"
@@ -249,7 +250,8 @@ func extractAllFiles(db *sql.DB, withUploadSharepoint bool, start int, end int, 
 		INNER JOIN teradocu.document doc ON doc.id = doc_bl.document_id
 		INNER JOIN teradocu.document_metadata doc_meta ON doc.id = doc_meta.document_id
 		INNER JOIN teradocu.folder fl ON doc.folder_id = fl.id
-		WHERE fl.fullpath ILIKE '%` + folder_path + `%'
+		where doc_bl.document_id = '2c9180838b7e5556018ca5a10f6b51c5'
+		--WHERE fl.fullpath ILIKE '%` + folder_path + `%'
 	`
 
 	var rows *sql.Rows
@@ -344,11 +346,22 @@ func extractAllFiles(db *sql.DB, withUploadSharepoint bool, start int, end int, 
 		}
 
 		// Optional: auto rename by magic
-		actualExt, _ := detectFileType(fileData)
-		if currentExt := filepath.Ext(outputPath); actualExt != currentExt && actualExt != "unknown" {
-			newPath := strings.TrimSuffix(outputPath, currentExt) + actualExt
+		// actualExt, _ := detectFileType(fileData)
+		// if currentExt := filepath.Ext(outputPath); actualExt != currentExt && actualExt != "unknown" {
+		// 	newPath := strings.TrimSuffix(outputPath, currentExt) + actualExt
+		// 	if err := os.Rename(outputPath, newPath); err == nil {
+		// 		outputPath = newPath
+		// 	}
+		// }
+
+		// Rename file based on MIME type (not magic bytes)
+		mimeExt := utils.GetExtensionFromMime(mimeType)
+		if currentExt := strings.ToLower(filepath.Ext(outputPath)); mimeExt != currentExt && mimeExt != "" {
+			newPath := strings.TrimSuffix(outputPath, currentExt) + mimeExt
 			if err := os.Rename(outputPath, newPath); err == nil {
 				outputPath = newPath
+			} else {
+				log.Printf("Failed to rename %s → %s: %v", outputPath, newPath, err)
 			}
 		}
 

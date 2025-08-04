@@ -1,1 +1,1 @@
-go run . --env .env --extract --no-replace
+go run . --env .env --extract
