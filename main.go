@@ -706,7 +706,6 @@ var knownSignatures = []FileSignature{
 	// PDF
 	{[]byte{0x25, 0x50, 0x44, 0x46}, ".pdf", "application/pdf"},
 	// Office Open XML (docx, xlsx, pptx) and ZIP
-	{[]byte{0x50, 0x4B, 0x03, 0x04}, ".zip", "application/zip"},
 	{[]byte{0x50, 0x4B, 0x03, 0x04}, ".docx", "application/vnd.openxmlformats-officedocument.wordprocessingml.document"},
 	{[]byte{0x50, 0x4B, 0x03, 0x04}, ".xlsx", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"},
 	{[]byte{0x50, 0x4B, 0x03, 0x04}, ".pptx", "application/vnd.openxmlformats-officedocument.presentationml.presentation"},
@@ -751,6 +750,9 @@ var knownSignatures = []FileSignature{
 	{[]byte{0x52, 0x49, 0x46, 0x46}, ".avi", "video/x-msvideo"},
 	// WASM
 	{[]byte{0x00, 0x61, 0x73, 0x6D}, ".wasm", "application/wasm"},
+
+	//zip
+	{[]byte{0x50, 0x4B, 0x03, 0x04}, ".zip", "application/zip"},
 }
 
 func detectFileType(data []byte) (string, string) {
