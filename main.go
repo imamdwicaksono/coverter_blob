@@ -16,7 +16,6 @@ import (
 	"io"
 	"io/ioutil"
 	"log"
-	"math"
 	"os"
 	"path/filepath"
 	"strconv"
@@ -52,6 +51,8 @@ func main() {
 	endFlag := flag.Int("end", 0, "end pada offset tertentu (default 0)")
 	withUploadSharepointFlag := flag.Bool("with-upload-sp", false, "Sertakan upload ke SharePoint")
 	noReplace := flag.Bool("no-replace", false, "Jangan timpa file yang sudah ada")
+
+	onlyUploadSharepoint := flag.Bool("only-upload-sp", false, "Hanya upload ke SharePoint tanpa ekstraksi")
 
 	exportFolder := os.Getenv("EXPORT_PATH")
 	if exportFolder == "" {
@@ -134,7 +135,7 @@ func main() {
 		if *endFlag > 0 {
 			end = *endFlag
 		}
-		if err := extractAllFiles(db, *withUploadSharepointFlag, start, end, *noReplace); err != nil {
+		if err := extractAllFiles(db, *withUploadSharepointFlag, start, end, *noReplace, *onlyUploadSharepoint); err != nil {
 			log.Fatalf("❌ Ekstrak gagal: %v", err)
 		}
 	default:
@@ -208,8 +209,7 @@ func loadLargeObject(db *sql.DB, oid uint32) ([]byte, error) {
 	return data, nil
 }
 
-func extractAllFiles(db *sql.DB, withUploadSharepoint bool, start int, end int, noReplace bool) error {
-
+func extractAllFiles(db *sql.DB, withUploadSharepoint bool, start int, end int, noReplace bool, onlyUploadSharepoint bool) error {
 	datetime := time.Now().Format("2006-01-02T15-04-05")
 	logPath := "logs/extraction_log_" + datetime + ".txt"
 	_ = os.MkdirAll("logs", os.ModePerm)
@@ -223,7 +223,6 @@ func extractAllFiles(db *sql.DB, withUploadSharepoint bool, start int, end int, 
 	log.SetOutput(io.MultiWriter(os.Stdout, logFile))
 	log.SetFlags(log.LstdFlags | log.Lshortfile)
 
-	// Validate pagination
 	if start != 0 || end != 0 {
 		if start < 0 {
 			start = 0
@@ -233,10 +232,11 @@ func extractAllFiles(db *sql.DB, withUploadSharepoint bool, start int, end int, 
 		}
 	}
 
-	folder_path := os.Getenv("FOLDER_PATH")
-	if folder_path == "" {
-		folder_path = "REPOSITORY/MMS GROUP INDONESIA/IT/IT Development"
+	folderPath := os.Getenv("FOLDER_PATH")
+	if folderPath == "" {
+		folderPath = "REPOSITORY/MMS GROUP INDONESIA/IT/IT Development"
 	}
+
 	query := `
 		WITH latest_version AS (
 			SELECT document_id, MAX(version) AS version
@@ -244,14 +244,17 @@ func extractAllFiles(db *sql.DB, withUploadSharepoint bool, start int, end int, 
 			GROUP BY document_id
 		)
 		SELECT doc_meta.filename, doc_meta.mime_type, doc_meta.file_type,
-			fl.fullpath, doc_bl.pdf, doc_bl.binary, fl.id
+		       fl.fullpath, doc_bl.pdf, doc_bl.binary, fl.id, doc_meta.size
 		FROM teradocu.document_binary_large doc_bl
 		JOIN latest_version lv ON lv.document_id = doc_bl.document_id AND lv.version = doc_bl.version
 		INNER JOIN teradocu.document doc ON doc.id = doc_bl.document_id
 		INNER JOIN teradocu.document_metadata doc_meta ON doc.id = doc_meta.document_id
 		INNER JOIN teradocu.folder fl ON doc.folder_id = fl.id
-		WHERE fl.fullpath ILIKE '%` + folder_path + `%'
-	`
+		WHERE fl.fullpath ILIKE '%` + folderPath + `%'`
+
+	if onlyUploadSharepoint {
+		noReplace = true
+	}
 
 	var rows *sql.Rows
 	if end != 0 {
@@ -260,20 +263,22 @@ func extractAllFiles(db *sql.DB, withUploadSharepoint bool, start int, end int, 
 	} else {
 		rows, err = db.Query(query)
 	}
-
 	if err != nil {
 		return fmt.Errorf("query failed: %w", err)
 	}
 	defer rows.Close()
 
-	metaFile, err := os.Create("extracted_metadata.csv")
-	if err != nil {
-		return fmt.Errorf("failed to create metadata CSV: %w", err)
+	var writer *csv.Writer
+	if !onlyUploadSharepoint {
+		metaFile, err := os.Create("extracted_metadata.csv")
+		if err != nil {
+			return fmt.Errorf("failed to create metadata CSV: %w", err)
+		}
+		defer metaFile.Close()
+		writer = csv.NewWriter(metaFile)
+		defer writer.Flush()
+		writer.Write([]string{"file_name", "file_type", "mime_type", "full_path", "saved_path", "size_mb"})
 	}
-	defer metaFile.Close()
-	writer := csv.NewWriter(metaFile)
-	defer writer.Flush()
-	writer.Write([]string{"file_name", "file_type", "mime_type", "full_path", "saved_path", "size_mb"})
 
 	type extracted struct {
 		localPath, sharePointPath string
@@ -281,12 +286,11 @@ func extractAllFiles(db *sql.DB, withUploadSharepoint bool, start int, end int, 
 	}
 
 	var (
-		extractedFiles  []extracted
-		totalSizeMBUint uint64
-		count           int32
-		startTime       = time.Now()
-		mu              sync.Mutex
-		timestamp       = time.Now().Format("2006-01-02T15-04-05")
+		extractedFiles []extracted
+		totalSizeMB    float64
+		count          int32
+		startTime      = time.Now()
+		timestamp      = time.Now().Format("2006-01-02T15-04-05")
 	)
 
 	for rows.Next() {
@@ -295,142 +299,118 @@ func extractAllFiles(db *sql.DB, withUploadSharepoint bool, start int, end int, 
 			pdfData                                []byte
 			binaryOid                              sql.NullInt64
 			folderId                               string
+			metaSize                               sql.NullInt64
 		)
 
-		if err := rows.Scan(&fileName, &mimeType, &fileType, &fullPath, &pdfData, &binaryOid, &folderId); err != nil {
+		if err := rows.Scan(&fileName, &mimeType, &fileType, &fullPath, &pdfData, &binaryOid, &folderId, &metaSize); err != nil {
 			log.Printf("❌ Failed to scan row: %v\n", err)
 			continue
 		}
 
 		var fileData []byte
+		var sizeMB float64
+
 		if mimeType == "application/pdf" && len(pdfData) > 0 {
 			fileData = pdfData
+			sizeMB = float64(len(fileData)) / (1024 * 1024)
 		} else if binaryOid.Valid {
-			fileData, err = loadLargeObject(db, uint32(binaryOid.Int64))
-			if err != nil {
-				log.Printf("❌ Failed to load binary LO %d: %v\n", binaryOid.Int64, err)
-				continue
+			if onlyUploadSharepoint {
+				if metaSize.Valid {
+					sizeMB = float64(metaSize.Int64) / (1024 * 1024)
+				} else {
+					log.Println("⚠️  Skipping: no size metadata")
+					continue
+				}
+				fileData = []byte{} // dummy (upload func bisa handle ini)
+			} else {
+				fileData, err = loadLargeObject(db, uint32(binaryOid.Int64))
+				if err != nil {
+					log.Printf("❌ Failed to load LO %d: %v\n", binaryOid.Int64, err)
+					continue
+				}
+				sizeMB = float64(len(fileData)) / (1024 * 1024)
 			}
 		} else {
-			log.Println("⚠️  No valid file content found")
+			log.Println("⚠️  No valid content")
 			continue
 		}
 
-		sizeMB := float64(len(fileData)) / (1024 * 1024)
-		atomic.AddInt32(&count, 1)
-		for {
-			old := atomic.LoadUint64(&totalSizeMBUint)
-			new := math.Float64bits(math.Float64frombits(old) + sizeMB)
-			if atomic.CompareAndSwapUint64(&totalSizeMBUint, old, new) {
-				break
-			}
-		}
+		count++
+		var outputPath string
 
 		safeFolder := filepath.Join(exportFolder, filepath.FromSlash(fullPath))
 		_ = os.MkdirAll(safeFolder, os.ModePerm)
 		outputName := sanitizeFileName(fileName)
-		outputPath := filepath.Join(safeFolder, outputName)
+		outputPath = filepath.Join(safeFolder, outputName)
 
-		// Cek jika file sudah ada dan flag noReplace aktif
-		if noReplace {
-			if _, err := os.Stat(outputPath); err == nil {
-				log.Printf("⚠️  Skipping (exists): %s\n", outputPath)
+		if !onlyUploadSharepoint {
+
+			if noReplace {
+				if _, err := os.Stat(outputPath); err == nil {
+					log.Printf("⚠️  Skipping (exists): %s\n", outputPath)
+					continue
+				}
+			}
+
+			if err := os.WriteFile(outputPath, fileData, 0644); err != nil {
+				log.Printf("❌ Failed to save: %v\n", err)
 				continue
 			}
+
 		}
 
-		if err := os.WriteFile(outputPath, fileData, 0644); err != nil {
-			log.Printf("❌ Failed to save file %s: %v\n", outputPath, err)
-			continue
-		}
-
-		// Optional: auto rename by magic
-		// actualExt, _ := detectFileType(fileData)
-		// if currentExt := filepath.Ext(outputPath); actualExt != currentExt && actualExt != "unknown" {
-		// 	newPath := strings.TrimSuffix(outputPath, currentExt) + actualExt
-		// 	if err := os.Rename(outputPath, newPath); err == nil {
-		// 		outputPath = newPath
-		// 	}
-		// }
-
-		// Rename file based on MIME type (not magic bytes)
 		mimeExt := utils.GetExtensionFromMime(mimeType)
 		if currentExt := strings.ToLower(filepath.Ext(outputPath)); mimeExt != currentExt && mimeExt != "" {
 			newPath := strings.TrimSuffix(outputPath, currentExt) + mimeExt
 			if err := os.Rename(outputPath, newPath); err == nil {
 				outputPath = newPath
-			} else {
-				log.Printf("Failed to rename %s → %s: %v", outputPath, newPath, err)
 			}
 		}
 
 		spPath := fmt.Sprintf("%s/%s", timestamp, strings.TrimPrefix(outputPath, exportFolder+string(os.PathSeparator)))
-
-		mu.Lock()
 		extractedFiles = append(extractedFiles, extracted{outputPath, spPath, sizeMB})
-		writer.Write([]string{fileName, fileType, mimeType, fullPath, outputPath, fmt.Sprintf("%.2f", sizeMB)})
-		mu.Unlock()
 
-		log.Printf("📄 [%d] %s → %s (%.2f MB)\n", count, fileName, outputPath, sizeMB)
+		if !onlyUploadSharepoint && writer != nil {
+			writer.Write([]string{fileName, fileType, mimeType, fullPath, outputPath, fmt.Sprintf("%.2f", sizeMB)})
+		}
+
+		log.Printf("📄 [%d] %s (%.2f MB)\n", count, fileName, sizeMB)
 	}
 
-	log.Printf("✅ Extraction completed — %d files, %.2f MB, elapsed: %s\n",
-		count,
-		math.Float64frombits(atomic.LoadUint64(&totalSizeMBUint)),
-		time.Since(startTime),
-	)
+	log.Printf("✅ Extracted %d files, %.2f MB, time: %s\n", count, totalSizeMB, time.Since(startTime))
 
-	log.Printf("\n✅ Extraction completed!\n")
-	log.Printf("📂 Total files extracted: %d\n", count)
-	log.Printf("📦 Total size extracted: %.2f MB\n", math.Float64frombits(atomic.LoadUint64(&totalSizeMBUint)))
-	log.Printf("⏱️  Extraction time: %s\n", time.Since(startTime))
-
-	if withUploadSharepoint {
-		fmt.Println("\n🚀 Starting SharePoint upload process...")
+	if withUploadSharepoint || onlyUploadSharepoint {
+		fmt.Println("\n🚀 Starting SharePoint upload...")
 		uploadStart := time.Now()
-		var uploadCount int32 = 0
-		var uploadWg sync.WaitGroup
-		uploadSem := make(chan struct{}, 5)
+		var uploadCount int32
+		var wg sync.WaitGroup
+		sem := make(chan struct{}, 5)
 		bar := progressbar.Default(int64(len(extractedFiles)), "Uploading to SharePoint")
 
 		for _, file := range extractedFiles {
-			uploadWg.Add(1)
-			uploadSem <- struct{}{}
+			wg.Add(1)
+			sem <- struct{}{}
 
 			go func(f extracted) {
-				defer uploadWg.Done()
-				defer func() { <-uploadSem }()
+				defer wg.Done()
+				defer func() { <-sem }()
 				defer bar.Add(1)
 
 				_, err := sharepoint.UploadFile(f.localPath, f.sharePointPath)
 				if err != nil {
-					fmt.Printf("\n❌ Failed to upload %s: %v\n", f.localPath, err)
+					fmt.Printf("\n❌ Upload failed: %s → %v\n", f.localPath, err)
 				} else {
 					atomic.AddInt32(&uploadCount, 1)
-					fmt.Printf("\n✔️ Uploaded %s (%.2f MB) to %s\n", filepath.Base(f.localPath), f.sizeMB, f.sharePointPath)
+					fmt.Printf("\n✔️  Uploaded: %s (%.2f MB)\n", filepath.Base(f.localPath), f.sizeMB)
 				}
 			}(file)
 		}
-		uploadWg.Wait()
+		wg.Wait()
 		bar.Finish()
 
-		fmt.Printf("\n✅ SharePoint upload completed!\n")
-		fmt.Printf("📤 Successfully uploaded %d/%d files\n", uploadCount, len(extractedFiles))
+		fmt.Printf("\n✅ Upload done: %d/%d files\n", uploadCount, len(extractedFiles))
 		fmt.Printf("⏱️  Upload time: %s\n", time.Since(uploadStart))
 	}
-
-	// logWriter := logs.SetLog("sharepoint_log.txt")
-	// logs.LogFlush(logWriter)
-
-	// if err := SaveUserFolder(db, timestamp); err != nil {
-	// 	return fmt.Errorf("failed to save folder access: %w", err)
-	// }
-	// fmt.Println("✅ Successfully saved folder access to users.json")
-
-	// if err := SaveListUsers(); err != nil {
-	// 	return fmt.Errorf("failed to save user list: %w", err)
-	// }
-	// fmt.Println("✅ Successfully saved user list to list_user.json")
 
 	return nil
 }

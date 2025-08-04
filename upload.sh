@@ -1,0 +1,1 @@
+nohup ./run.sh --only-upload-sp > upload_output.log 2>&1 &

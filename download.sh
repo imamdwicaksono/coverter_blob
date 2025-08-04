@@ -1,0 +1,1 @@
+nohup ./run.sh > download_output.log 2>&1 &
