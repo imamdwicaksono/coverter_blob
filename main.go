@@ -250,8 +250,7 @@ func extractAllFiles(db *sql.DB, withUploadSharepoint bool, start int, end int, 
 		INNER JOIN teradocu.document doc ON doc.id = doc_bl.document_id
 		INNER JOIN teradocu.document_metadata doc_meta ON doc.id = doc_meta.document_id
 		INNER JOIN teradocu.folder fl ON doc.folder_id = fl.id
-		where doc_bl.document_id = '2c9180838b7e5556018ca5a10f6b51c5'
-		--WHERE fl.fullpath ILIKE '%` + folder_path + `%'
+		WHERE fl.fullpath ILIKE '%` + folder_path + `%'
 	`
 
 	var rows *sql.Rows
