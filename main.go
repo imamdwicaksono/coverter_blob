@@ -232,11 +232,13 @@ func extractAllFiles(db *sql.DB, withUploadSharepoint bool, start int, end int, 
 		noReplace = true
 	}
 
-	if start < 0 {
-		start = 0
-	}
-	if end <= start {
-		end = start + 100
+	if start != 0 || end != 0 {
+		if start < 0 {
+			start = 0
+		}
+		if end <= start {
+			end = start + 100
+		}
 	}
 
 	folderPath := os.Getenv("FOLDER_PATH")
