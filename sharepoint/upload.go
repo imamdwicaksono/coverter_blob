@@ -3,9 +3,11 @@ package sharepoint
 import (
 	"converter_blob/types"
 	"fmt"
+	"net/url"
 	"os"
 	"path/filepath"
 	"strings"
+	"time"
 
 	"github.com/go-resty/resty/v2"
 )
@@ -97,11 +99,11 @@ func UploadToSharePointAndShare(localPath, sharepointFolderPath, timestamp strin
 // }
 
 func UploadFile(localPath, sharepointFolderPath string) (string, error) {
+
 	cleanPath := strings.ReplaceAll(sharepointFolderPath, "\\", "/")
 	cleanPath = strings.TrimPrefix(cleanPath, "/")
 	cleanPath = strings.ReplaceAll(cleanPath, "//", "/")
 
-	// Upload file dan kembalikan full path upload (untuk dicatat/share nanti)
 	token := GetToken()
 	siteID := os.Getenv("MS_SITE_ID")
 
@@ -109,24 +111,26 @@ func UploadFile(localPath, sharepointFolderPath string) (string, error) {
 		return "", fmt.Errorf("❌ Token atau SiteID belum diset di environment variable")
 	}
 
-	client := resty.New()
-
-	// Baca file lokal
 	fileBytes, err := os.ReadFile(localPath)
 	if err != nil {
 		return "", fmt.Errorf("❌ Gagal membaca file lokal '%s': %w", localPath, err)
 	}
 
-	// Gabungkan kembali path folder + filename
-	// Gunakan format path SharePoint (gunakan '/' bukan '\')
 	fullSharePath := filepath.ToSlash(cleanPath)
+
+	// Fix utama: escape path
+	escapedPath := url.PathEscape(fullSharePath)
 
 	uploadURL := fmt.Sprintf(
 		"https://graph.microsoft.com/v1.0/sites/%s/drive/root:/%s:/content",
-		siteID, fullSharePath,
+		siteID, escapedPath,
 	)
 
-	// Upload file ke SharePoint
+	client := resty.New().
+		SetTimeout(120 * time.Second).        // Perpanjang timeout jadi 2 menit
+		SetRetryCount(3).                     // Coba ulang jika gagal
+		SetRetryWaitTime(5 * time.Second).    // Tunggu 5 detik antara retry
+		SetRetryMaxWaitTime(30 * time.Second) // Maks total tunggu retry
 	resp, err := client.R().
 		SetHeader("Authorization", "Bearer "+token).
 		SetHeader("Content-Type", "application/octet-stream").
@@ -139,8 +143,8 @@ func UploadFile(localPath, sharepointFolderPath string) (string, error) {
 	if resp.IsError() {
 		return "", fmt.Errorf("❌ Upload gagal (status %d): %s", resp.StatusCode(), resp.String())
 	}
-	fmt.Printf("📁 Berhasil diunggah ke SharePoint: %s\n", fullSharePath)
 
+	fmt.Printf("📁 Berhasil diunggah ke SharePoint: %s\n", fullSharePath)
 	return fullSharePath, nil
 }
 
