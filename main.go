@@ -287,7 +287,8 @@ func extractAllFiles(db *sql.DB, withUploadSharepoint bool, start int, end int, 
 		extractedFiles []extracted
 		totalSizeMB    float64
 		count          int32
-		timestamp      = time.Now().Format("2006-01-02T15-04-05")
+		timestamp      = "" //time.Now().Format("2006-01-02T15-04-05")
+		startTime      = time.Now()
 	)
 
 	for rows.Next() {
@@ -363,6 +364,11 @@ func extractAllFiles(db *sql.DB, withUploadSharepoint bool, start int, end int, 
 	}
 
 	log.Printf("\n✅ Extracted %d files, total %.2f MB\n", count, totalSizeMB)
+	log.Printf("✅ Extracted %d files, %.2f MB, time: %s\n", count, totalSizeMB, time.Since(startTime))
+	log.Printf("\n✅ Extraction completed!\n")
+	log.Printf("📂 Total files extracted: %d\n", count)
+	log.Printf("📦 Total size extracted: %.2f MB\n", totalSizeMB)
+	log.Printf("⏱️  Extraction time: %s\n", time.Since(startTime))
 
 	if withUploadSharepoint || onlyUploadSharepoint {
 		log.Println("\n🚀 Starting SharePoint upload...")
@@ -402,6 +408,11 @@ func extractAllFiles(db *sql.DB, withUploadSharepoint bool, start int, end int, 
 
 		log.Printf("\n📤 Upload selesai: %d/%d berhasil", uploadCount, len(extractedFiles))
 		log.Printf("⏱️  Durasi upload: %s\n", time.Since(uploadStart))
+		log.Printf("📂 Total files uploaded: %d\n", uploadCount)
+		log.Printf("📦 Total file failed missing : %d\n", len(failedFiles))
+		log.Printf("📦 Total file failed other : %d\n", len(failedOther))
+		log.Printf("📦 Total size uploaded: %.2f MB\n", totalSizeMB)
+		log.Printf("⏱️  Upload time: %s\n", time.Since(uploadStart))
 
 		if len(failedFiles) > 0 {
 			_ = os.WriteFile("upload_failed_missing.txt", []byte(strings.Join(failedFiles, "\n")), 0644)
