@@ -127,7 +127,10 @@ func UploadFile(localPath, sharepointFolderPath string) (string, error) {
 	)
 
 	client := resty.New().
-		SetTimeout(120 * time.Second).        // Perpanjang timeout jadi 2 menit
+		SetTimeout(120 * time.Second). // Perpanjang timeout jadi 2 menit
+		AddRetryCondition(func(r *resty.Response, err error) bool {
+			return r.StatusCode() == 503 || r.StatusCode() == 429 || err != nil
+		}).
 		SetRetryCount(3).                     // Coba ulang jika gagal
 		SetRetryWaitTime(5 * time.Second).    // Tunggu 5 detik antara retry
 		SetRetryMaxWaitTime(30 * time.Second) // Maks total tunggu retry
