@@ -134,6 +134,7 @@ func UploadFile(localPath, sharepointFolderPath string) (string, error) {
 	resp, err := client.R().
 		SetHeader("Authorization", "Bearer "+token).
 		SetHeader("Content-Type", "application/octet-stream").
+		SetHeader("If-Match", "*").
 		SetBody(fileBytes).
 		Put(uploadURL)
 
