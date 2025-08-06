@@ -257,7 +257,7 @@ func extractAllFiles(db *sql.DB, withUploadSharepoint bool, start int, end int, 
 	FROM teradocu.document_binary_large doc_bl
 	JOIN latest_version lv ON lv.document_id = doc_bl.document_id AND lv.version = doc_bl.version
 	INNER JOIN teradocu.document doc ON doc.id = doc_bl.document_id
-	INNER JOIN teradocu.document_metadata doc_meta ON doc.id = doc_meta.document_id
+	INNER JOIN teradocu.document_metadata doc_meta ON doc.id = doc_meta.document_id AND lv.version = doc_meta.version
 	INNER JOIN teradocu.folder fl ON doc.folder_id = fl.id
 	WHERE doc.deleted_date is null AND fl.fullpath ILIKE '%` + folderPath + `%'`
 
