@@ -378,6 +378,7 @@ func extractAllFiles(db *sql.DB, withUploadSharepoint bool, start int, end int, 
 		var uploadCount int32
 		var failedFiles []string
 		var failedOther []string
+		var failedAlready []string
 		var wg sync.WaitGroup
 		sem := make(chan struct{}, 5)
 		bar := progressbar.Default(int64(len(extractedFiles)), "Uploading")
@@ -393,10 +394,13 @@ func extractAllFiles(db *sql.DB, withUploadSharepoint bool, start int, end int, 
 				_, err := sharepoint.UploadFile(f.localPath, f.sharePointPath)
 				if err != nil {
 					if strings.Contains(err.Error(), "400") {
-						failedOther = append(failedOther, f.localPath)
-						log.Printf("❌ Upload gagal (400): %s", f.localPath)
-					} else {
 						failedFiles = append(failedFiles, f.localPath)
+						log.Printf("❌ Upload gagal (400): %s", f.localPath)
+					} else if strings.Contains(err.Error(), "409") {
+						failedAlready = append(failedAlready, f.localPath)
+						log.Printf("❌ Upload gagal (409): %s", f.localPath)
+					} else {
+						failedOther = append(failedOther, f.localPath)
 						log.Printf("❌ Upload gagal: %s (%v)", f.localPath, err)
 					}
 				} else {
@@ -411,8 +415,9 @@ func extractAllFiles(db *sql.DB, withUploadSharepoint bool, start int, end int, 
 		log.Printf("\n📤 Upload selesai: %d/%d berhasil", uploadCount, len(extractedFiles))
 		log.Printf("⏱️  Durasi upload: %s\n", time.Since(uploadStart))
 		log.Printf("📂 Total files uploaded: %d\n", uploadCount)
-		log.Printf("📦 Total file failed missing : %d\n", len(failedFiles))
+		log.Printf("📦 Total file failed bad request : %d\n", len(failedFiles))
 		log.Printf("📦 Total file failed other : %d\n", len(failedOther))
+		log.Printf("📦 Total file failed already : %d\n", len(failedAlready))
 		log.Printf("📦 Total size uploaded: %.2f MB\n", totalSizeMB)
 		log.Printf("⏱️  Upload time: %s\n", time.Since(uploadStart))
 
