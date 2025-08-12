@@ -10,11 +10,9 @@ import (
 	"strings"
 	"time"
 
-	"bytes"
 	"encoding/json"
 
 	"github.com/go-resty/resty/v2"
-	"github.com/schollz/progressbar/v3"
 )
 
 type FolderAccessMap map[string]map[string]bool // Folder → Email set
@@ -114,149 +112,83 @@ type UploadState struct {
 	FilePath  string `json:"filePath"`
 }
 
-func UploadFileChunkedResume(localPath, sharepointFolderPath string) (string, error) {
-	cleanPath := strings.ReplaceAll(sharepointFolderPath, "\\", "/")
-	cleanPath = strings.TrimPrefix(cleanPath, "/")
-	cleanPath = strings.ReplaceAll(cleanPath, "//", "/")
-
-	token := GetToken()
-	siteID := os.Getenv("MS_SITE_ID")
-
-	if token == "" || siteID == "" {
-		return "", fmt.Errorf("❌ Token atau SiteID belum diset di environment variable")
-	}
-
+func UploadFileChunkedResume(localPath, sharepointPath string) (string, error) {
 	file, err := os.Open(localPath)
 	if err != nil {
-		return "", fmt.Errorf("❌ Gagal membuka file '%s': %w", localPath, err)
+		return "", fmt.Errorf("❌ Gagal membuka file: %w", err)
 	}
 	defer file.Close()
 
-	fileInfo, _ := file.Stat()
-	fileSize := fileInfo.Size()
+	fi, _ := file.Stat()
+	fileSize := fi.Size()
+	chunkSize := int64(5 * 1024 * 1024) // 5MB
+	totalChunks := (fileSize + chunkSize - 1) / chunkSize
 
-	fullSharePath := filepath.ToSlash(cleanPath)
-	escapedPath := escapeSharePointPath(fullSharePath)
-
-	client := resty.New().
-		SetTimeout(15 * time.Minute).
-		AddRetryCondition(func(r *resty.Response, err error) bool {
-			return r.StatusCode() == 503 || r.StatusCode() == 429 || err != nil
-		}).
-		SetRetryCount(3).
-		SetRetryWaitTime(5 * time.Second).
-		SetRetryMaxWaitTime(30 * time.Second)
-
-	stateFile := localPath + ".uploadstate"
-	var uploadURL string
-
-	// 1️⃣ Cek status upload sebelumnya
-	if savedState, err := os.ReadFile(stateFile); err == nil {
-		var st UploadState
-		if json.Unmarshal(savedState, &st) == nil && st.FilePath == localPath {
-			fmt.Println("🔄 Melanjutkan upload dari session sebelumnya...")
-			uploadURL = st.UploadURL
-		}
+	token := GetToken()
+	siteID := os.Getenv("MS_SITE_ID")
+	if token == "" || siteID == "" {
+		return "", fmt.Errorf("❌ Token/SiteID belum diset")
 	}
 
-	// 2️⃣ Kalau tidak ada, buat session baru
-	if uploadURL == "" {
-		createSessionURL := fmt.Sprintf(
-			"https://graph.microsoft.com/v1.0/sites/%s/drive/root:/%s:/createUploadSession",
-			siteID, escapedPath,
-		)
-		resp, err := client.R().
-			SetHeader("Authorization", "Bearer "+token).
-			SetHeader("Content-Type", "application/json").
-			Post(createSessionURL)
-		if err != nil {
-			return "", fmt.Errorf("❌ Gagal membuat upload session: %w", err)
-		}
-		if resp.IsError() {
-			return "", fmt.Errorf("❌ Gagal membuat upload session (status %d): %s", resp.StatusCode(), resp.String())
-		}
-
-		var session UploadSessionResponse
-		if err := json.Unmarshal(resp.Body(), &session); err != nil {
-			return "", fmt.Errorf("❌ Gagal parse upload session: %w", err)
-		}
-		uploadURL = session.UploadURL
-
-		saveState(stateFile, UploadState{UploadURL: uploadURL, FilePath: localPath})
-	}
-
-	// 3️⃣ Cek posisi terakhir dari server
-	start := int64(0)
-	rangeResp, err := client.R().
+	// Create upload session
+	cleanPath := url.PathEscape(strings.TrimPrefix(filepath.ToSlash(sharepointPath), "/"))
+	sessionURL := fmt.Sprintf("https://graph.microsoft.com/v1.0/sites/%s/drive/root:/%s:/createUploadSession", siteID, cleanPath)
+	resp, err := resty.New().
+		R().
 		SetHeader("Authorization", "Bearer "+token).
-		Get(uploadURL)
-	if err == nil && rangeResp.StatusCode() == 200 {
-		var sessionInfo UploadSessionResponse
-		if json.Unmarshal(rangeResp.Body(), &sessionInfo) == nil && len(sessionInfo.NextExpectedRanges) > 0 {
-			fmt.Println("📌 Next expected range:", sessionInfo.NextExpectedRanges[0])
-			fmt.Sscanf(sessionInfo.NextExpectedRanges[0], "%d-", &start)
-		}
+		SetBody(map[string]interface{}{
+			"item": map[string]interface{}{
+				"@microsoft.graph.conflictBehavior": "replace",
+				"name":                              filepath.Base(sharepointPath),
+			},
+		}).
+		Post(sessionURL)
+	if err != nil {
+		return "", fmt.Errorf("❌ Gagal membuat upload session: %w", err)
 	}
 
-	// 4️⃣ Progress bar setup
-	bar := progressbar.NewOptions64(
-		fileSize,
-		progressbar.OptionSetDescription("📤 Uploading"),
-		progressbar.OptionSetWriter(os.Stdout),
-		progressbar.OptionShowBytes(true),
-		progressbar.OptionSetWidth(15),
-		progressbar.OptionThrottle(65*time.Millisecond),
-		progressbar.OptionShowCount(),
-		progressbar.OptionClearOnFinish(),
-		progressbar.OptionSpinnerType(14),
-		progressbar.OptionFullWidth(),
-	)
-	_ = bar.Add64(start) // kalau resume, mulai dari posisi terakhir
+	var sessionData struct {
+		UploadURL string `json:"uploadUrl"`
+	}
+	if err := json.Unmarshal(resp.Body(), &sessionData); err != nil {
+		return "", fmt.Errorf("❌ Gagal parsing upload URL: %w", err)
+	}
 
-	// 5️⃣ Upload per chunk
-	const chunkSize int64 = 5 * 1024 * 1024 // 5 MB
-	for start < fileSize {
-		end := start + chunkSize - 1
-		if end >= fileSize {
-			end = fileSize - 1
-		}
-		chunkLen := end - start + 1
+	uploadURL := sessionData.UploadURL
+	buffer := make([]byte, chunkSize)
+	var start int64 = 0
+	client := resty.New().SetTimeout(5 * time.Minute)
 
-		buf := make([]byte, chunkLen)
-		_, err := file.ReadAt(buf, start)
-		if err != nil && err != io.EOF {
-			return "", fmt.Errorf("❌ Gagal membaca chunk: %w", err)
+	for chunkIndex := int64(0); chunkIndex < totalChunks; chunkIndex++ {
+		bytesRead, readErr := file.Read(buffer)
+		if readErr != nil && readErr != io.EOF {
+			return "", fmt.Errorf("❌ Gagal baca chunk: %w", readErr)
 		}
 
+		end := start + int64(bytesRead) - 1
 		contentRange := fmt.Sprintf("bytes %d-%d/%d", start, end, fileSize)
 
-		chunkResp, err := client.R().
+		r, err := client.R().
 			SetHeader("Authorization", "Bearer "+token).
-			SetHeader("Content-Length", fmt.Sprintf("%d", chunkLen)).
+			SetHeader("Content-Length", fmt.Sprintf("%d", bytesRead)).
 			SetHeader("Content-Range", contentRange).
-			SetBody(bytes.NewReader(buf)).
+			SetBody(buffer[:bytesRead]).
 			Put(uploadURL)
 
 		if err != nil {
-			return "", fmt.Errorf("❌ Gagal upload chunk: %w", err)
+			return "", fmt.Errorf("❌ Gagal upload chunk %d: %w", chunkIndex, err)
 		}
 
-		if chunkResp.StatusCode() == 201 || chunkResp.StatusCode() == 200 {
-			_ = bar.Finish()
-			fmt.Println("\n✅ Upload selesai!")
-			os.Remove(stateFile)
-			return fullSharePath, nil
+		// 202 = masih lanjut, 201/200 = selesai
+		if r.StatusCode() == 201 || r.StatusCode() == 200 {
+			fmt.Printf("✔️ Upload selesai: %s\n", sharepointPath)
+			return sharepointPath, nil
 		}
 
-		if chunkResp.StatusCode() != 308 {
-			return "", fmt.Errorf("❌ Upload chunk gagal (status %d): %s", chunkResp.StatusCode(), chunkResp.String())
-		}
-
-		start = end + 1
-		_ = bar.Add64(chunkLen)
+		start += int64(bytesRead)
 	}
 
-	return "", fmt.Errorf("❌ Upload tidak selesai, tapi tidak ada error fatal")
+	return sharepointPath, nil
 }
 
 func saveState(filename string, state UploadState) {
