@@ -422,6 +422,9 @@ func extractAllFiles(db *sql.DB, withUploadSharepoint bool, start int, end int, 
 		sem := make(chan struct{}, 5)
 		bar := progressbar.Default(int64(len(extractedFiles)), "Uploading")
 
+		const maxRetry = 3
+		const retryDelay = 2 * time.Second
+
 		for _, f := range extractedFiles {
 			wg.Add(1)
 			sem <- struct{}{}
@@ -430,24 +433,46 @@ func extractAllFiles(db *sql.DB, withUploadSharepoint bool, start int, end int, 
 				defer func() { <-sem }()
 				defer bar.Add(1)
 
-				_, err := sharepoint.UploadFileChunkedResumeV2(f.localPath, f.sharePointPath)
-				if err != nil {
+				var err error
+				for attempt := 1; attempt <= maxRetry; attempt++ {
+					_, err = sharepoint.UploadFileChunkedResumeV2(f.localPath, f.sharePointPath)
+					if err == nil {
+						atomic.AddInt32(&uploadCount, 1)
+						log.Printf("✔️ Uploaded: %s (%.2f MB)", filepath.Base(f.localPath), f.sizeMB)
+						return
+					}
+
+					// Tangani error spesifik
 					if strings.Contains(err.Error(), "400") {
 						failedFiles = append(failedFiles, f.localPath)
 						log.Printf("❌ Upload gagal (400): %s", f.localPath)
-					} else if strings.Contains(err.Error(), "409") {
+						return
+					}
+					if strings.Contains(err.Error(), "409") {
 						failedAlready = append(failedAlready, f.localPath)
 						log.Printf("❌ Upload gagal (409): %s", f.localPath)
-					} else {
-						failedOther = append(failedOther, f.localPath)
-						log.Printf("❌ Upload gagal: %s (%v)", f.localPath, err)
+						return
 					}
-				} else {
-					atomic.AddInt32(&uploadCount, 1)
-					log.Printf("✔️ Uploaded: %s (%.2f MB)", filepath.Base(f.localPath), f.sizeMB)
+					if strings.Contains(err.Error(), "404") {
+						failedOther = append(failedOther, f.localPath)
+						log.Printf("❌ Upload gagal permanen (404): %s", f.localPath)
+						return
+					}
+
+					// Retry jika belum mencapai maxRetry
+					if attempt < maxRetry {
+						log.Printf("⚠️  Upload gagal (%s), retry %d/%d setelah %s...",
+							f.localPath, attempt, maxRetry, retryDelay)
+						time.Sleep(retryDelay)
+					}
 				}
+
+				// Jika semua percobaan gagal
+				failedOther = append(failedOther, f.localPath)
+				log.Printf("❌ Upload gagal setelah %d percobaan: %s (%v)", maxRetry, f.localPath, err)
 			}(f)
 		}
+
 		wg.Wait()
 		bar.Finish()
 
