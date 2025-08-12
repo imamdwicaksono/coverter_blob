@@ -430,7 +430,7 @@ func extractAllFiles(db *sql.DB, withUploadSharepoint bool, start int, end int, 
 				defer func() { <-sem }()
 				defer bar.Add(1)
 
-				_, err := sharepoint.UploadFileChunkedResume(f.localPath, f.sharePointPath)
+				_, err := sharepoint.UploadFileChunkedResumeV2(f.localPath, f.sharePointPath)
 				if err != nil {
 					if strings.Contains(err.Error(), "400") {
 						failedFiles = append(failedFiles, f.localPath)

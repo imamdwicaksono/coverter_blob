@@ -1,6 +1,7 @@
 package sharepoint
 
 import (
+	"bytes"
 	"converter_blob/types"
 	"fmt"
 	"io"
@@ -61,45 +62,6 @@ func UploadToSharePointAndShare(localPath, sharepointFolderPath, timestamp strin
 
 	return nil
 }
-
-// func SharingFolder() {
-// 	// Siapkan body request untuk invite
-// 	recipients := make([]map[string]string, 0, len(userEmails))
-// 	for _, email := range userEmails {
-// 		recipients = append(recipients, map[string]string{"email": email})
-// 	}
-
-// 	shareBody := map[string]interface{}{
-// 		"recipients":     recipients,
-// 		"message":        "File berhasil dibagikan melalui sistem.",
-// 		"requireSignIn":  true,
-// 		"sendInvitation": true,
-// 		"roles":          []string{"read"},
-// 	}
-
-// 	shareFolderPath := filepath.Dir(fullSharePath)
-// 	shareURL := fmt.Sprintf(
-// 		"https://graph.microsoft.com/v1.0/sites/%s/drive/root:/%s:/invite",
-// 		siteID, shareFolderPath,
-// 	)
-
-// 	shareResp, err := client.R().
-// 		SetHeader("Authorization", "Bearer "+token).
-// 		SetHeader("Content-Type", "application/json").
-// 		SetBody(shareBody).
-// 		Post(shareURL)
-
-// 	if err != nil {
-// 		return fmt.Errorf("❌ Gagal membagikan file: %w", err)
-// 	}
-// 	if shareResp.IsError() {
-// 		return fmt.Errorf("❌ Gagal membagikan (status %d): %s", shareResp.StatusCode(), shareResp.String())
-// 	}
-
-// 	fmt.Printf("📨 Berhasil dibagikan ke: %s\n", strings.Join(userEmails, ", "))
-
-// 	return nil
-// }
 
 type UploadSessionResponse struct {
 	UploadURL          string   `json:"uploadUrl"`
@@ -189,6 +151,252 @@ func UploadFileChunkedResume(localPath, sharepointPath string) (string, error) {
 	}
 
 	return sharepointPath, nil
+}
+
+// Struct untuk parsing createUploadSession response / session info
+type uploadSessionResp struct {
+	UploadURL          string   `json:"uploadUrl"`
+	ExpirationDateTime string   `json:"expirationDateTime"`
+	NextExpectedRanges []string `json:"nextExpectedRanges,omitempty"`
+}
+
+type uploadState struct {
+	UploadURL string `json:"uploadUrl"`
+	FilePath  string `json:"filePath"`
+}
+
+// UploadFileChunkedResumeV2 = chunked upload + resume + robust handling 202/308 + debug logs
+func UploadFileChunkedResumeV2(localPath, sharepointFolderPath string) (string, error) {
+	// prepare
+	token := GetToken()
+	siteID := os.Getenv("MS_SITE_ID")
+	if token == "" || siteID == "" {
+		return "", fmt.Errorf("❌ Token atau MS_SITE_ID belum diset")
+	}
+
+	// open file
+	f, err := os.Open(localPath)
+	if err != nil {
+		return "", fmt.Errorf("❌ Gagal membuka file '%s': %w", localPath, err)
+	}
+	defer f.Close()
+
+	fi, err := f.Stat()
+	if err != nil {
+		return "", fmt.Errorf("❌ Gagal stat file '%s': %w", localPath, err)
+	}
+	fileSize := fi.Size()
+	if fileSize == 0 {
+		return "", fmt.Errorf("❌ File kosong: %s", localPath)
+	}
+
+	// sanitize sharepoint path (escape components, keep /)
+	cleanPath := strings.ReplaceAll(sharepointFolderPath, "\\", "/")
+	cleanPath = strings.TrimPrefix(cleanPath, "/")
+	cleanPath = strings.ReplaceAll(cleanPath, "//", "/")
+	parts := strings.Split(cleanPath, "/")
+	for i := range parts {
+		parts[i] = url.PathEscape(parts[i])
+	}
+	escapedPath := strings.Join(parts, "/")
+
+	// resty client
+	client := resty.New().
+		SetTimeout(15 * time.Minute).
+		AddRetryCondition(func(r *resty.Response, err error) bool {
+			return err != nil || r.StatusCode() == 429 || r.StatusCode() == 503
+		}).
+		SetRetryCount(3).
+		SetRetryWaitTime(2 * time.Second).
+		SetRetryMaxWaitTime(10 * time.Second)
+
+	// state file for resume
+	stateFile := localPath + ".uploadstate"
+	var uploadURL string
+
+	// try read saved state
+	if b, err := os.ReadFile(stateFile); err == nil {
+		var st uploadState
+		if json.Unmarshal(b, &st) == nil && st.FilePath == localPath && st.UploadURL != "" {
+			uploadURL = st.UploadURL
+		}
+	}
+
+	// if no saved session, create one (with small retry/backoff)
+	if uploadURL == "" {
+		createURL := fmt.Sprintf("https://graph.microsoft.com/v1.0/sites/%s/drive/root:/%s:/createUploadSession", siteID, escapedPath)
+
+		// body: instruct replace on conflict so we don't get 409
+		body := map[string]interface{}{
+			"item": map[string]interface{}{
+				"@microsoft.graph.conflictBehavior": "replace",
+				"name":                              filepath.Base(cleanPath),
+			},
+		}
+
+		var createResp *resty.Response
+		var createErr error
+		attempts := 3
+		for i := 0; i < attempts; i++ {
+			createResp, createErr = client.R().
+				SetHeader("Authorization", "Bearer "+token).
+				SetHeader("Content-Type", "application/json").
+				SetBody(body).
+				Post(createURL)
+
+			if createErr == nil && !createResp.IsError() {
+				break
+			}
+			// small backoff
+			time.Sleep(time.Duration((i+1)*2) * time.Second)
+		}
+
+		if createErr != nil {
+			return "", fmt.Errorf("❌ Gagal createUploadSession: %w", createErr)
+		}
+		if createResp.IsError() {
+			return "", fmt.Errorf("❌ createUploadSession gagal (status %d): %s", createResp.StatusCode(), createResp.String())
+		}
+
+		var s uploadSessionResp
+		if err := json.Unmarshal(createResp.Body(), &s); err != nil {
+			return "", fmt.Errorf("❌ Gagal parse createUploadSession response: %w -- body: %s", err, createResp.String())
+		}
+		if s.UploadURL == "" {
+			return "", fmt.Errorf("❌ UploadURL kosong dari createUploadSession -- body: %s", createResp.String())
+		}
+		uploadURL = s.UploadURL
+
+		// save state
+		save := uploadState{UploadURL: uploadURL, FilePath: localPath}
+		if b, err := json.Marshal(save); err == nil {
+			_ = os.WriteFile(stateFile, b, 0644)
+		}
+	}
+
+	// Helper: get next expected start from session info (GET uploadURL)
+	getNextStart := func() (int64, error) {
+		r, err := client.R().
+			SetHeader("Authorization", "Bearer "+token).
+			Get(uploadURL)
+		if err != nil {
+			return 0, fmt.Errorf("❌ Gagal GET session info: %w", err)
+		}
+		// sometimes server returns 200 + body with nextExpectedRanges
+		if r.IsError() {
+			// if 404/410 the session expired
+			return 0, fmt.Errorf("❌ GET session info gagal (status %d): %s", r.StatusCode(), r.String())
+		}
+		var s uploadSessionResp
+		if err := json.Unmarshal(r.Body(), &s); err == nil {
+			if len(s.NextExpectedRanges) > 0 {
+				// nextExpectedRanges format: "0-" or "12345-"
+				var start int64
+				fmt.Sscanf(s.NextExpectedRanges[0], "%d-", &start)
+				return start, nil
+			}
+		}
+		// fallback: if header "Range" exists (308 responses sometimes include it)
+		if rng := r.Header().Get("Range"); rng != "" {
+			// Range: bytes=0-499
+			var a, b int64
+			if n, _ := fmt.Sscanf(rng, "bytes=%d-%d", &a, &b); n == 2 {
+				return b + 1, nil
+			}
+		}
+		// nothing known, assume 0
+		return 0, nil
+	}
+
+	// determine start (resume)
+	var start int64 = 0
+	if uploadURL != "" {
+		if s, err := getNextStart(); err == nil && s > 0 {
+			start = s
+		}
+	}
+
+	// chunk upload loop
+	const chunkSize int64 = 5 * 1024 * 1024 // 5MB
+	buf := make([]byte, chunkSize)
+
+	for start < fileSize {
+		remaining := fileSize - start
+		readLen := chunkSize
+		if remaining < chunkSize {
+			readLen = remaining
+		}
+
+		// read exact part
+		n, err := f.ReadAt(buf[:readLen], start)
+		if err != nil && err != io.EOF {
+			return "", fmt.Errorf("❌ Gagal baca file chunk at %d: %w", start, err)
+		}
+		if int64(n) != readLen {
+			// short read — adjust
+			readLen = int64(n)
+		}
+
+		end := start + readLen - 1
+		contentRange := fmt.Sprintf("bytes %d-%d/%d", start, end, fileSize)
+
+		// do PUT
+		resp, err := client.R().
+			SetHeader("Authorization", "Bearer "+token).
+			SetHeader("Content-Length", fmt.Sprintf("%d", readLen)).
+			SetHeader("Content-Range", contentRange).
+			SetBody(bytes.NewReader(buf[:readLen])).
+			Put(uploadURL)
+
+		if err != nil {
+			return "", fmt.Errorf("❌ Gagal upload chunk (start=%d end=%d): %w", start, end, err)
+		}
+
+		// success final
+		if resp.StatusCode() == 201 || resp.StatusCode() == 200 {
+			// remove state file
+			_ = os.Remove(stateFile)
+			// optionally return item metadata from resp.Body()
+			return filepath.ToSlash(strings.TrimPrefix(sharepointFolderPath, "/")), nil
+		}
+
+		// partial accepted — server expects more
+		if resp.StatusCode() == 202 || resp.StatusCode() == 308 || resp.StatusCode() == 204 {
+			// try to parse nextExpectedRanges from response body
+			var s uploadSessionResp
+			if err := json.Unmarshal(resp.Body(), &s); err == nil && len(s.NextExpectedRanges) > 0 {
+				var nextStart int64
+				fmt.Sscanf(s.NextExpectedRanges[0], "%d-", &nextStart)
+				if nextStart > start {
+					start = nextStart
+					continue
+				}
+			}
+
+			// else do GET session info to ask server what's next
+			if next, err := getNextStart(); err == nil && next > start {
+				start = next
+				continue
+			}
+
+			// fallback: advance by readLen if server doesn't provide nextExpectedRanges
+			start = end + 1
+			continue
+		}
+
+		// any other response -> error out and include body for debugging
+		return "", fmt.Errorf("❌ Upload chunk gagal (status %d): %s", resp.StatusCode(), resp.String())
+	}
+
+	// loop finished but no final confirmation — do a final GET to check status
+	if sStart, err := getNextStart(); err == nil {
+		if sStart >= fileSize {
+			_ = os.Remove(stateFile)
+			return filepath.ToSlash(strings.TrimPrefix(sharepointFolderPath, "/")), nil
+		}
+	}
+
+	return "", fmt.Errorf("❌ Upload tidak selesai dan server tidak mengembalikan final response")
 }
 
 func saveState(filename string, state UploadState) {
