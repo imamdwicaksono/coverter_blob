@@ -417,6 +417,7 @@ func extractAllFiles(db *sql.DB, withUploadSharepoint bool, start int, end int, 
 		var uploadCount int32
 		var failedFirstPass []extracted
 		var failedAlready []string
+		var failedFinal []string
 		var wg sync.WaitGroup
 		sem := make(chan struct{}, 5)
 		bar := progressbar.Default(int64(len(extractedFiles)), "Uploading")
@@ -478,7 +479,9 @@ func extractAllFiles(db *sql.DB, withUploadSharepoint bool, start int, end int, 
 		log.Printf("\n📤 Upload selesai: %d/%d berhasil", uploadCount, len(extractedFiles))
 		log.Printf("⏱️  Durasi upload: %s\n", time.Since(uploadStart))
 		log.Printf("📂 Total files uploaded: %d\n", uploadCount)
-		log.Printf("📦 Total file failed already : %d\n", len(failedAlready))
+		log.Printf("📦 Total files failed: %d\n", len(failedFirstPass))
+		log.Printf("📦 Total files failed (already): %d\n", len(failedAlready))
+		log.Printf("📦 Total files failed (final): %d\n", len(failedFinal))
 		log.Printf("📦 Total size uploaded: %.2f MB\n", totalSizeMB)
 	}
 
