@@ -415,16 +415,13 @@ func extractAllFiles(db *sql.DB, withUploadSharepoint bool, start int, end int, 
 		log.Println("\n🚀 Starting SharePoint upload...")
 		uploadStart := time.Now()
 		var uploadCount int32
-		var failedFiles []string
-		var failedOther []string
+		var failedFirstPass []extracted
 		var failedAlready []string
 		var wg sync.WaitGroup
 		sem := make(chan struct{}, 5)
 		bar := progressbar.Default(int64(len(extractedFiles)), "Uploading")
 
-		const maxRetry = 3
-		const retryDelay = 2 * time.Second
-
+		// Pass 1 - Upload semua file
 		for _, f := range extractedFiles {
 			wg.Add(1)
 			sem <- struct{}{}
@@ -433,64 +430,56 @@ func extractAllFiles(db *sql.DB, withUploadSharepoint bool, start int, end int, 
 				defer func() { <-sem }()
 				defer bar.Add(1)
 
-				var err error
-				for attempt := 1; attempt <= maxRetry; attempt++ {
-					_, err = sharepoint.UploadFileChunkedResumeV2(f.localPath, f.sharePointPath)
-					if err == nil {
-						atomic.AddInt32(&uploadCount, 1)
-						log.Printf("✔️ Uploaded: %s (%.2f MB)", filepath.Base(f.localPath), f.sizeMB)
-						return
-					}
-
-					// Tangani error spesifik
-					if strings.Contains(err.Error(), "400") {
-						failedFiles = append(failedFiles, f.localPath)
-						log.Printf("❌ Upload gagal (400): %s", f.localPath)
-						return
-					}
+				_, err := sharepoint.UploadFileChunkedResumeV2(f.localPath, f.sharePointPath)
+				if err != nil {
 					if strings.Contains(err.Error(), "409") {
 						failedAlready = append(failedAlready, f.localPath)
 						log.Printf("❌ Upload gagal (409): %s", f.localPath)
-						return
+					} else {
+						failedFirstPass = append(failedFirstPass, f)
+						log.Printf("❌ Upload gagal: %s (%v)", f.localPath, err)
 					}
-					if strings.Contains(err.Error(), "404") {
-						failedOther = append(failedOther, f.localPath)
-						log.Printf("❌ Upload gagal permanen (404): %s", f.localPath)
-						return
-					}
-
-					// Retry jika belum mencapai maxRetry
-					if attempt < maxRetry {
-						log.Printf("⚠️  Upload gagal (%s), retry %d/%d setelah %s...",
-							f.localPath, attempt, maxRetry, retryDelay)
-						time.Sleep(retryDelay)
-					}
+				} else {
+					atomic.AddInt32(&uploadCount, 1)
+					log.Printf("✔️ Uploaded: %s (%.2f MB)", filepath.Base(f.localPath), f.sizeMB)
 				}
-
-				// Jika semua percobaan gagal
-				failedOther = append(failedOther, f.localPath)
-				log.Printf("❌ Upload gagal setelah %d percobaan: %s (%v)", maxRetry, f.localPath, err)
 			}(f)
 		}
-
 		wg.Wait()
 		bar.Finish()
+
+		// Pass 2 - Retry untuk file gagal di Pass 1
+		if len(failedFirstPass) > 0 {
+			log.Printf("\n🔄 Retry upload untuk %d file yang gagal...", len(failedFirstPass))
+			barRetry := progressbar.Default(int64(len(failedFirstPass)), "Retrying")
+			var failedFinal []string
+
+			for _, f := range failedFirstPass {
+				_, err := sharepoint.UploadFileChunkedResumeV2(f.localPath, f.sharePointPath)
+				if err != nil {
+					failedFinal = append(failedFinal, f.localPath)
+					log.Printf("❌ Retry gagal: %s (%v)", f.localPath, err)
+				} else {
+					atomic.AddInt32(&uploadCount, 1)
+					log.Printf("✔️ Retry sukses: %s (%.2f MB)", filepath.Base(f.localPath), f.sizeMB)
+				}
+				barRetry.Add(1)
+			}
+			barRetry.Finish()
+
+			if len(failedFinal) > 0 {
+				_ = os.WriteFile("upload_failed_final.txt", []byte(strings.Join(failedFinal, "\n")), 0644)
+				log.Printf("\n🚨 Masih ada %d file gagal setelah retry, cek upload_failed_final.txt", len(failedFinal))
+			} else {
+				log.Println("\n🎉 Semua file berhasil di-upload setelah retry!")
+			}
+		}
 
 		log.Printf("\n📤 Upload selesai: %d/%d berhasil", uploadCount, len(extractedFiles))
 		log.Printf("⏱️  Durasi upload: %s\n", time.Since(uploadStart))
 		log.Printf("📂 Total files uploaded: %d\n", uploadCount)
-		log.Printf("📦 Total file failed bad request : %d\n", len(failedFiles))
-		log.Printf("📦 Total file failed other : %d\n", len(failedOther))
 		log.Printf("📦 Total file failed already : %d\n", len(failedAlready))
 		log.Printf("📦 Total size uploaded: %.2f MB\n", totalSizeMB)
-		log.Printf("⏱️  Upload time: %s\n", time.Since(uploadStart))
-
-		if len(failedFiles) > 0 {
-			_ = os.WriteFile("upload_failed_missing.txt", []byte(strings.Join(failedFiles, "\n")), 0644)
-		}
-		if len(failedOther) > 0 {
-			_ = os.WriteFile("upload_failed_400.txt", []byte(strings.Join(failedOther, "\n")), 0644)
-		}
 	}
 
 	return nil
