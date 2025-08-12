@@ -3,13 +3,18 @@ package sharepoint
 import (
 	"converter_blob/types"
 	"fmt"
+	"io"
 	"net/url"
 	"os"
 	"path/filepath"
 	"strings"
 	"time"
 
+	"bytes"
+	"encoding/json"
+
 	"github.com/go-resty/resty/v2"
+	"github.com/schollz/progressbar/v3"
 )
 
 type FolderAccessMap map[string]map[string]bool // Folder → Email set
@@ -98,8 +103,18 @@ func UploadToSharePointAndShare(localPath, sharepointFolderPath, timestamp strin
 // 	return nil
 // }
 
-func UploadFile(localPath, sharepointFolderPath string) (string, error) {
+type UploadSessionResponse struct {
+	UploadURL          string   `json:"uploadUrl"`
+	ExpirationDateTime string   `json:"expirationDateTime"`
+	NextExpectedRanges []string `json:"nextExpectedRanges,omitempty"`
+}
 
+type UploadState struct {
+	UploadURL string `json:"uploadUrl"`
+	FilePath  string `json:"filePath"`
+}
+
+func UploadFileChunkedResume(localPath, sharepointFolderPath string) (string, error) {
 	cleanPath := strings.ReplaceAll(sharepointFolderPath, "\\", "/")
 	cleanPath = strings.TrimPrefix(cleanPath, "/")
 	cleanPath = strings.ReplaceAll(cleanPath, "//", "/")
@@ -111,44 +126,150 @@ func UploadFile(localPath, sharepointFolderPath string) (string, error) {
 		return "", fmt.Errorf("❌ Token atau SiteID belum diset di environment variable")
 	}
 
-	fileBytes, err := os.ReadFile(localPath)
+	file, err := os.Open(localPath)
 	if err != nil {
-		return "", fmt.Errorf("❌ Gagal membaca file lokal '%s': %w", localPath, err)
+		return "", fmt.Errorf("❌ Gagal membuka file '%s': %w", localPath, err)
 	}
+	defer file.Close()
+
+	fileInfo, _ := file.Stat()
+	fileSize := fileInfo.Size()
 
 	fullSharePath := filepath.ToSlash(cleanPath)
-
-	// Fix utama: escape path
-	escapedPath := url.PathEscape(fullSharePath)
-
-	uploadURL := fmt.Sprintf(
-		"https://graph.microsoft.com/v1.0/sites/%s/drive/root:/%s:/content",
-		siteID, escapedPath,
-	)
+	escapedPath := escapeSharePointPath(fullSharePath)
 
 	client := resty.New().
-		SetTimeout(120 * time.Second). // Perpanjang timeout jadi 2 menit
+		SetTimeout(15 * time.Minute).
 		AddRetryCondition(func(r *resty.Response, err error) bool {
 			return r.StatusCode() == 503 || r.StatusCode() == 429 || err != nil
 		}).
-		SetRetryCount(3).                     // Coba ulang jika gagal
-		SetRetryWaitTime(5 * time.Second).    // Tunggu 5 detik antara retry
-		SetRetryMaxWaitTime(30 * time.Second) // Maks total tunggu retry
-	resp, err := client.R().
+		SetRetryCount(3).
+		SetRetryWaitTime(5 * time.Second).
+		SetRetryMaxWaitTime(30 * time.Second)
+
+	stateFile := localPath + ".uploadstate"
+	var uploadURL string
+
+	// 1️⃣ Cek status upload sebelumnya
+	if savedState, err := os.ReadFile(stateFile); err == nil {
+		var st UploadState
+		if json.Unmarshal(savedState, &st) == nil && st.FilePath == localPath {
+			fmt.Println("🔄 Melanjutkan upload dari session sebelumnya...")
+			uploadURL = st.UploadURL
+		}
+	}
+
+	// 2️⃣ Kalau tidak ada, buat session baru
+	if uploadURL == "" {
+		createSessionURL := fmt.Sprintf(
+			"https://graph.microsoft.com/v1.0/sites/%s/drive/root:/%s:/createUploadSession",
+			siteID, escapedPath,
+		)
+		resp, err := client.R().
+			SetHeader("Authorization", "Bearer "+token).
+			SetHeader("Content-Type", "application/json").
+			Post(createSessionURL)
+		if err != nil {
+			return "", fmt.Errorf("❌ Gagal membuat upload session: %w", err)
+		}
+		if resp.IsError() {
+			return "", fmt.Errorf("❌ Gagal membuat upload session (status %d): %s", resp.StatusCode(), resp.String())
+		}
+
+		var session UploadSessionResponse
+		if err := json.Unmarshal(resp.Body(), &session); err != nil {
+			return "", fmt.Errorf("❌ Gagal parse upload session: %w", err)
+		}
+		uploadURL = session.UploadURL
+
+		saveState(stateFile, UploadState{UploadURL: uploadURL, FilePath: localPath})
+	}
+
+	// 3️⃣ Cek posisi terakhir dari server
+	start := int64(0)
+	rangeResp, err := client.R().
 		SetHeader("Authorization", "Bearer "+token).
-		SetHeader("Content-Type", "application/octet-stream").
-		SetBody(fileBytes).
-		Put(uploadURL)
-
-	if err != nil {
-		return "", fmt.Errorf("❌ Gagal mengupload ke SharePoint: %w", err)
-	}
-	if resp.IsError() {
-		return "", fmt.Errorf("❌ Upload gagal (status %d): %s", resp.StatusCode(), resp.String())
+		Get(uploadURL)
+	if err == nil && rangeResp.StatusCode() == 200 {
+		var sessionInfo UploadSessionResponse
+		if json.Unmarshal(rangeResp.Body(), &sessionInfo) == nil && len(sessionInfo.NextExpectedRanges) > 0 {
+			fmt.Println("📌 Next expected range:", sessionInfo.NextExpectedRanges[0])
+			fmt.Sscanf(sessionInfo.NextExpectedRanges[0], "%d-", &start)
+		}
 	}
 
-	fmt.Printf("📁 Berhasil diunggah ke SharePoint: %s\n", fullSharePath)
-	return fullSharePath, nil
+	// 4️⃣ Progress bar setup
+	bar := progressbar.NewOptions64(
+		fileSize,
+		progressbar.OptionSetDescription("📤 Uploading"),
+		progressbar.OptionSetWriter(os.Stdout),
+		progressbar.OptionShowBytes(true),
+		progressbar.OptionSetWidth(15),
+		progressbar.OptionThrottle(65*time.Millisecond),
+		progressbar.OptionShowCount(),
+		progressbar.OptionClearOnFinish(),
+		progressbar.OptionSpinnerType(14),
+		progressbar.OptionFullWidth(),
+	)
+	_ = bar.Add64(start) // kalau resume, mulai dari posisi terakhir
+
+	// 5️⃣ Upload per chunk
+	const chunkSize int64 = 5 * 1024 * 1024 // 5 MB
+	for start < fileSize {
+		end := start + chunkSize - 1
+		if end >= fileSize {
+			end = fileSize - 1
+		}
+		chunkLen := end - start + 1
+
+		buf := make([]byte, chunkLen)
+		_, err := file.ReadAt(buf, start)
+		if err != nil && err != io.EOF {
+			return "", fmt.Errorf("❌ Gagal membaca chunk: %w", err)
+		}
+
+		contentRange := fmt.Sprintf("bytes %d-%d/%d", start, end, fileSize)
+
+		chunkResp, err := client.R().
+			SetHeader("Authorization", "Bearer "+token).
+			SetHeader("Content-Length", fmt.Sprintf("%d", chunkLen)).
+			SetHeader("Content-Range", contentRange).
+			SetBody(bytes.NewReader(buf)).
+			Put(uploadURL)
+
+		if err != nil {
+			return "", fmt.Errorf("❌ Gagal upload chunk: %w", err)
+		}
+
+		if chunkResp.StatusCode() == 201 || chunkResp.StatusCode() == 200 {
+			_ = bar.Finish()
+			fmt.Println("\n✅ Upload selesai!")
+			os.Remove(stateFile)
+			return fullSharePath, nil
+		}
+
+		if chunkResp.StatusCode() != 308 {
+			return "", fmt.Errorf("❌ Upload chunk gagal (status %d): %s", chunkResp.StatusCode(), chunkResp.String())
+		}
+
+		start = end + 1
+		_ = bar.Add64(chunkLen)
+	}
+
+	return "", fmt.Errorf("❌ Upload tidak selesai, tapi tidak ada error fatal")
+}
+
+func saveState(filename string, state UploadState) {
+	data, _ := json.Marshal(state)
+	os.WriteFile(filename, data, 0644)
+}
+
+func escapeSharePointPath(path string) string {
+	parts := strings.Split(path, "/")
+	for i, p := range parts {
+		parts[i] = url.PathEscape(p)
+	}
+	return strings.Join(parts, "/")
 }
 
 func ShareFolderOnly(folderPath string, emailAccess []types.EmailAccess) error {

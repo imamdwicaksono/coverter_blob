@@ -214,6 +214,40 @@ type extracted struct {
 	isDummy                   bool
 }
 
+func extractAllFolderPath(db *sql.DB) error {
+	query := `
+	select fullpath from teradocu.folder fl where fl.is_deleted is false`
+
+	var rows *sql.Rows
+
+	rows, err := db.Query(query)
+	if err != nil {
+		return fmt.Errorf("query failed: %w", err)
+	}
+
+	defer rows.Close()
+
+	for rows.Next() {
+		var (
+			fullPath string
+		)
+
+		if err := rows.Scan(&fullPath); err != nil {
+			log.Printf("❌ Failed to scan row: %v\n", err)
+			continue
+		}
+
+		fullPath = filepath.Join(exportFolder, fullPath)
+		if _, err := os.Stat(filepath.Dir(fullPath)); os.IsNotExist(err) {
+			_ = os.MkdirAll(filepath.Dir(fullPath), os.ModePerm)
+		}
+
+	}
+
+	return nil
+
+}
+
 func extractAllFiles(db *sql.DB, withUploadSharepoint bool, start int, end int, noReplace bool, onlyUploadSharepoint bool) error {
 	datetime := time.Now().Format("2006-01-02T15-04-05")
 	logPath := "logs/extraction_log_" + datetime + ".txt"
@@ -244,6 +278,11 @@ func extractAllFiles(db *sql.DB, withUploadSharepoint bool, start int, end int, 
 	folderPath := os.Getenv("FOLDER_PATH")
 	if folderPath == "" {
 		folderPath = "REPOSITORY/MMS GROUP INDONESIA/IT/IT Development"
+	}
+
+	// Create folder all first
+	if err := extractAllFolderPath(db); err != nil {
+		return fmt.Errorf("gagal membuat folder: %w", err)
 	}
 
 	query := `
@@ -391,7 +430,7 @@ func extractAllFiles(db *sql.DB, withUploadSharepoint bool, start int, end int, 
 				defer func() { <-sem }()
 				defer bar.Add(1)
 
-				_, err := sharepoint.UploadFile(f.localPath, f.sharePointPath)
+				_, err := sharepoint.UploadFileChunkedResume(f.localPath, f.sharePointPath)
 				if err != nil {
 					if strings.Contains(err.Error(), "400") {
 						failedFiles = append(failedFiles, f.localPath)
@@ -571,7 +610,7 @@ ORDER BY doc_bl.document_id, doc_bl.version DESC
 		folderPath := fmt.Sprintf("%s/%s", timestamp, cleanFolderPath)
 
 		if withUploadSharepoint {
-			sharepoint.UploadFile(outputPath, folderPath)
+			sharepoint.UploadFileChunkedResume(outputPath, folderPath)
 		}
 
 		// folderKey := fmt.Sprintf("%s/%s", timestamp, fullPath)
