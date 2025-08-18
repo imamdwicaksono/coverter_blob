@@ -404,6 +404,7 @@ func extractAllFiles(db *sql.DB, withUploadSharepoint bool, start int, end int, 
 		log.Printf("📄 [%d] %s (%.2f MB)\n", count, fileName, sizeMB)
 	}
 
+	log.Printf("\n✅ Extracted from path: %s\n", folderPath)
 	log.Printf("\n✅ Extracted %d files, total %.2f MB\n", count, totalSizeMB)
 	log.Printf("✅ Extracted %d files, %.2f MB, time: %s\n", count, totalSizeMB, time.Since(startTime))
 	log.Printf("\n✅ Extraction completed!\n")
@@ -476,6 +477,7 @@ func extractAllFiles(db *sql.DB, withUploadSharepoint bool, start int, end int, 
 			}
 		}
 
+		log.Printf("\n✅ Upload from path: %s\n", folderPath)
 		log.Printf("\n📤 Upload selesai: %d/%d berhasil", uploadCount, len(extractedFiles))
 		log.Printf("⏱️  Durasi upload: %s\n", time.Since(uploadStart))
 		log.Printf("📂 Total files uploaded: %d\n", uploadCount)
